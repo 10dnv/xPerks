@@ -10,7 +10,7 @@ const Navbar = () => {
     };
 
   return (
-    <div className='text-white flex justify-between items-center h-24 max-w-[2300px] px-4' >
+    <div className='text-white flex justify-between items-center h-[96px] max-w-[2300px] px-4' >
         <h1 className='text-5xl font-bold text-[#24f7dd]'>xPerks</h1>
         <ul className='hidden md:flex'>
             <li className='p-4 mr-20'>Exchange rate: 1p = 0.025 EGLD</li>
