@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 import {LuLogOut} from 'react-icons/lu'
+import {BsCurrencyExchange} from 'react-icons/bs'
 import Avatar from 'react-avatar';
 
 const Navbar = () => {
@@ -15,7 +16,11 @@ const Navbar = () => {
     <div className='text-white flex justify-between items-center h-[96px] max-w-[2300px] px-4' >
         <h1 className='text-5xl font-bold text-[#24f7dd]'>xPerks</h1>
         <ul className='hidden md:flex items-center '>
-            <li className='p-4 mr-20'>Exchange rate: 1p = 0.025 EGLD</li>
+            
+            <li className='p-4 mr-20 flex'>
+                <BsCurrencyExchange size={20}/>
+                <span className='pl-3'>Rate 1p = 0.025 EGLD</span>
+            </li>
             <li className='p-4'>
                 <span className='mx-2'>
                     <Avatar size={45} name="Username" round={true} />
@@ -37,7 +42,10 @@ const Navbar = () => {
         <div className={!nav ? 'fixed left-0 top-0 w-[300px] bg-[#000300] border-r border-r-gray-900 h-full ease-in-out duration-300' : 'fixed left-[-100%]'}>
             <h1 className='text-5xl font-bold text-[#24f7dd] m-4'>xPerks</h1>
             <ul className='p-4'>
-                <li className='p-4 ml-8'>Rate: 1p = 0.025 EGLD</li>
+                <li className='p-4 ml-7 flex'>
+                    <BsCurrencyExchange size={20}/>
+                    <span className='pl-3'>Rate: 1p = 0.025 EGLD</span>
+                </li>
                 <li className='p-4 ' >
                     <span className='pr-5 ml-8'>
                         <Avatar size={45} name="Username" round={true} />
