@@ -3,6 +3,7 @@ import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 import {LuLogOut} from 'react-icons/lu'
 import {BsCurrencyExchange} from 'react-icons/bs'
 import Avatar from 'react-avatar';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -14,7 +15,7 @@ const Navbar = () => {
 
   return (
     <div className='text-white flex justify-between items-center h-[96px] max-w-[2300px] px-4' >
-        <h1 className='text-5xl font-bold text-[#24f7dd]'>xPerks</h1>
+        <Link to="/"><h1 className='text-5xl font-bold text-[#24f7dd]'>xPerks</h1></Link>
         <ul className='hidden md:flex items-center '>
             
             <li className='p-4 mr-20 flex'>
@@ -40,7 +41,7 @@ const Navbar = () => {
         </div>
 
         <div className={!nav ? 'fixed left-0 top-0 w-[300px] bg-[#000300] border-r border-r-gray-900 h-full ease-in-out duration-300' : 'fixed left-[-100%]'}>
-            <h1 className='text-5xl font-bold text-[#24f7dd] m-4'>xPerks</h1>
+        <Link to="/"><h1 className='text-5xl font-bold text-[#24f7dd] m-4'>xPerks</h1></Link>
             <ul className='p-4'>
                 <li className='p-4 ml-7 flex'>
                     <BsCurrencyExchange size={20}/>
@@ -58,12 +59,12 @@ const Navbar = () => {
                         <span className='ml-2'>Logout</span>
                     </button>
                 </li>
-                <li className='p-4 mt-5 uppercase border-b border-b-gray-900'>Profile</li>
-                <li className='p-4 uppercase border-b border-b-gray-900'>Point History</li>
-                <li className='p-4 uppercase border-b border-b-gray-900'>Point Balance</li>
-                <li className='p-4 uppercase border-b border-b-gray-900'>Peer recognise</li>
-                <li className='p-4 uppercase border-b border-b-gray-900'>Redeem points</li>
-                <li className='p-4 uppercase border-b border-b-gray-900'>Upcoming events</li>
+                <li className='p-4 mt-5 uppercase border-b border-b-gray-900'><Link to="/profile">Profile</Link></li>
+                <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/history">Point History</Link></li>
+                <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/balance">Point Balance</Link></li>
+                <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/recognise">Peer recognise</Link></li>
+                <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/redeem">Redeem points</Link></li>
+                <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/events">Upcoming events</Link></li>
             </ul>
         </div>
     </div>

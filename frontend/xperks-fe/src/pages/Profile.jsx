@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 
-const Hero = () => {
+const Profile = () => {
     const [userData, setUserData] = useState([]);
 
     useEffect(() => {
@@ -26,4 +26,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default Profile
