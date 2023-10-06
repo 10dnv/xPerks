@@ -5,7 +5,7 @@ const Profile = () => {
     const [userData, setUserData] = useState([]);
 
     useEffect(() => {
-       fetch('http://192.168.0.174:8080/user/1')
+       fetch('/api/user/1')
           .then((response) => response.json())
           .then((data) => {
              console.log(data);

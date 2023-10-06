@@ -12,6 +12,12 @@ import Layout from "./pages/Layout";
 import Login from "./pages/Login";
 
 function App() {
+  const token = localStorage.getItem('accessToken');
+
+  if(!token) {
+    return <Login />
+  }
+  
   return (
     <BrowserRouter>
       <Routes>

@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <div className='text-white flex justify-between items-center h-[96px] max-w-[2300px] px-4' >
-        <Link to="/"><h1 className='text-5xl font-bold text-[#24f7dd]'>xPerks</h1></Link>
+        <Link to="/"><h1 className='text-5xl font-bold text-elrond'>xPerks</h1></Link>
         <ul className='hidden md:flex items-center '>
             
             <li className='p-4 mr-20 flex'>
@@ -41,7 +41,7 @@ const Navbar = () => {
         </div>
 
         <div className={!nav ? 'fixed left-0 top-0 w-[300px] bg-[#000300] border-r border-r-gray-900 h-full ease-in-out duration-300' : 'fixed left-[-100%]'}>
-        <Link to="/"><h1 className='text-5xl font-bold text-[#24f7dd] m-4'>xPerks</h1></Link>
+        <Link to="/"><h1 className='text-5xl font-bold text-elrond m-4'>xPerks</h1></Link>
             <ul className='p-4'>
                 <li className='p-4 ml-7 flex'>
                     <BsCurrencyExchange size={20}/>
