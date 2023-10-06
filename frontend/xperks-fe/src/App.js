@@ -14,7 +14,7 @@ import Login from "./pages/Login";
 function App() {
   const token = localStorage.getItem('accessToken');
 
-  if(!token) {
+  if(token) {
     return <Login />
   }
   
@@ -23,7 +23,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
-          <Route path="login" element={<Login />} />
+          <Route path="login" element={<Dashboard />} />
           <Route path="profile" element={<Profile />} />
           <Route path="*" element={<NoPage />} />
         </Route>
