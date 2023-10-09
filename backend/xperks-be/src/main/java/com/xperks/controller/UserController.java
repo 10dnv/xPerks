@@ -1,4 +1,4 @@
-package com.xperks.api.controller;
+package com.xperks.controller;
 
 import com.xperks.persistence.User;
 import com.xperks.service.UserService;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class UserController implements ControllerIF {
+public class UserController {
 
     @Autowired
     private UserService userService;
