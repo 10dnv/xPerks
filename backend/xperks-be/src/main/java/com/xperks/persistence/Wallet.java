@@ -1,9 +1,8 @@
 package com.xperks.persistence;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -12,6 +11,9 @@ import java.math.BigDecimal;
 @AttributeOverride(name = "id", column = @Column(name = "wallet_id"))
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Wallet extends BaseEntity {
 
     private BigDecimal balance;
@@ -19,6 +21,7 @@ public class Wallet extends BaseEntity {
     private String erdAddress;
     @JoinColumn(name = "user_id")
     @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private User user;
 
 }

@@ -1,5 +1,6 @@
-package com.xperks.api.controller;
+package com.xperks.controller;
 
+import com.xperks.dto.UserModel;
 import com.xperks.persistence.User;
 import com.xperks.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class UserController implements ControllerIF {
+public class UserController {
 
     @Autowired
     private UserService userService;
@@ -21,7 +22,7 @@ public class UserController implements ControllerIF {
     }
 
     @GetMapping("/user/{id}")
-    public User getUser(@PathVariable int id) {
+    public UserModel getUser(@PathVariable int id) {
         return userService.getUser(id);
     }
 }
