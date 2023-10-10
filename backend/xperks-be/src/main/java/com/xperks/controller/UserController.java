@@ -1,5 +1,6 @@
 package com.xperks.controller;
 
+import com.xperks.dto.UserModel;
 import com.xperks.persistence.User;
 import com.xperks.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public User getUser(@PathVariable int id) {
+    public UserModel getUser(@PathVariable int id) {
         return userService.getUser(id);
     }
 }

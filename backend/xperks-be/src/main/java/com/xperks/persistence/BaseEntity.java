@@ -22,4 +22,8 @@ public class BaseEntity {
     private int deleted;
     @JsonIgnore
     private int version;
+
+    public BaseEntity(int id) {
+        this.id = id;
+    }
 }

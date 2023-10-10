@@ -1,13 +1,10 @@
 package com.xperks.persistence;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -16,13 +13,15 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User extends BaseEntity implements UserDetails {
+public class User extends BaseEntity {
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @Temporal(TemporalType.DATE)
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
+    @Temporal(TemporalType.DATE)
     @Column(name = "employment_date")
     private Date employmentDate;
     @Column(name = "email_address")
@@ -34,38 +33,16 @@ public class User extends BaseEntity implements UserDetails {
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private Wallet wallet;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return emailAddress;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
+    @Builder
+    public User(int id, String firstName, String lastName, Date dateOfBirth, Date employmentDate, String emailAddress, String password, User superior, Wallet wallet) {
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.employmentDate = employmentDate;
+        this.emailAddress = emailAddress;
+        this.password = password;
+        this.superior = superior;
+        this.wallet = wallet;
     }
 }
