@@ -4,6 +4,7 @@ import {LuLogOut} from 'react-icons/lu'
 import {BsCurrencyExchange} from 'react-icons/bs'
 import Avatar from 'react-avatar';
 import { Link } from "react-router-dom";
+import Logo from './Logo';
 
 const Navbar = () => {
 
@@ -15,7 +16,7 @@ const Navbar = () => {
 
   return (
     <div className='text-white flex justify-between items-center h-[96px] max-w-[2300px] px-4' >
-        <Link to="/"><h1 className='text-5xl font-bold text-elrond'>xPerks</h1></Link>
+        <Link to="/"><Logo size='small'/></Link>
         <ul className='hidden md:flex items-center '>
             
             <li className='p-4 mr-20 flex'>
@@ -41,7 +42,7 @@ const Navbar = () => {
         </div>
 
         <div className={!nav ? 'fixed left-0 top-0 w-[300px] bg-[#000300] border-r border-r-gray-900 h-full ease-in-out duration-300' : 'fixed left-[-100%]'}>
-        <Link to="/"><h1 className='text-5xl font-bold text-elrond m-4'>xPerks</h1></Link>
+        <div className='m-4'><Link to="/"><Logo size='small'/></Link></div>
             <ul className='p-4'>
                 <li className='p-4 ml-7 flex'>
                     <BsCurrencyExchange size={20}/>
