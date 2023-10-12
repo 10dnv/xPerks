@@ -1,5 +1,5 @@
 package com.xperks.security.config;
-import com.xperks.service.UserService;
+import com.xperks.service.UserServiceIF;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private final UserService userService;
+    private final UserServiceIF userService;
 
     @Bean
     public UserDetailsService userDetailsService() {

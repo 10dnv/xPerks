@@ -2,11 +2,9 @@ package com.xperks.controller;
 
 import com.xperks.dto.UserModel;
 import com.xperks.persistence.User;
-import com.xperks.service.UserService;
+import com.xperks.service.UserServiceIF;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,14 +12,16 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceIF userService;
 
     @GetMapping("/user")
+    @ResponseBody
     public List<User> getUserList() {
         return userService.getUserList();
     }
 
     @GetMapping("/user/{id}")
+    @ResponseBody
     public UserModel getUser(@PathVariable int id) {
         return userService.getUser(id);
     }
