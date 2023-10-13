@@ -1,9 +1,7 @@
 package com.xperks.adapter;
 
 import com.xperks.dto.TransactionModel;
-import com.xperks.dto.UserMainInfo;
 import com.xperks.persistence.Transaction;
-import com.xperks.persistence.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -16,17 +16,23 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class Transaction extends BaseEntity {
 
-    @JoinColumn(name = "sender_id")
+    @JoinColumn(name = "sender_id", nullable = false)
     @OneToOne(fetch = FetchType.LAZY)
     private User sender;
-    @JoinColumn(name = "receiver_id")
+
+    @JoinColumn(name = "receiver_id", nullable = false)
     @OneToOne(fetch = FetchType.LAZY)
     private User receiver;
-    @JoinColumn(name = "approver_id")
+
+    @JoinColumn(name = "approver_id", nullable = false)
     @OneToOne(fetch = FetchType.LAZY)
     private User approver;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Points amount;
 }

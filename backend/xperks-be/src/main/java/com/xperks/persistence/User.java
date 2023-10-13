@@ -2,6 +2,7 @@ package com.xperks.persistence;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.xperks.dto.Points;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import java.util.Date;
@@ -16,26 +17,40 @@ import java.util.Date;
 @NoArgsConstructor
 public class User extends BaseEntity {
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
+    @Size(max = 50)
     private String firstName;
-    @Column(name = "last_name")
+
+    @Column(name = "last_name", nullable = false)
+    @Size(max = 50)
     private String lastName;
+
     @Temporal(TemporalType.DATE)
-    @Column(name = "date_of_birth")
+    @Column(name = "date_of_birth", nullable = false)
     private Date dateOfBirth;
+
     @Temporal(TemporalType.DATE)
-    @Column(name = "employment_date")
+    @Column(name = "employment_date", nullable = false)
     private Date employmentDate;
-    @Column(name = "email_address")
+
+    @Column(name = "email_address", nullable = false)
+    @Size(max = 100)
     private String emailAddress;
+
+    @Column(nullable = false)
+    @Size(max = 100)
     private String password;
-    @JoinColumn(name = "superior_id")
+
+    @JoinColumn(name = "superior_id", nullable = false)
     @OneToOne
     @JsonIgnoreProperties("superior")
     private User superior;
+
     @Enumerated(EnumType.STRING)
     private Points balance;
+
     @Column(name = "erd_address")
+    @Size(max = 250)
     private String erdAddress;
 
 }
