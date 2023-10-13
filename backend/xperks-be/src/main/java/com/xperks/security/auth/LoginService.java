@@ -24,6 +24,6 @@ public class LoginService implements LoginServiceIF {
         var user = userService.findUserByEmailAddress(request.getUserEmail());
         Objects.requireNonNull(user);
         var jwtToken = jwtService.generateToken(user);
-        return LoginResponse.builder().token(jwtToken).firstName(user.getFirstName()).build();
+        return LoginResponse.builder().token(jwtToken).firstName(user.getFirstName()).id(user.getId()).build();
     }
 }
