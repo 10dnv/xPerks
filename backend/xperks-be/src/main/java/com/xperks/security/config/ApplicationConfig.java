@@ -20,12 +20,7 @@ public class ApplicationConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String emailAddress) {
-                return userService.findUserByEmailAddress(emailAddress);
-            }
-        };
+        return userService::findUserByEmailAddress;
     }
 
     @Bean

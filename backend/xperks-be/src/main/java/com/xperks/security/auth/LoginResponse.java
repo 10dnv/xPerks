@@ -13,5 +13,6 @@ public class LoginResponse {
 
     private String token;
     private String firstName;
+    private String lastName;
     private int id;
 }

@@ -8,7 +8,6 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -17,18 +16,23 @@ public class UserService implements UserServiceIF {
     private final UserRepository userRepository;
     private final UserAdapter userAdapter;
 
-    @Transactional
-    public List<User> getUserList() {
-        return userRepository.findAll();
-    }
+    @Override
     @Transactional
     public UserModel getUser(int id) {
         return userAdapter.toUserModel(userRepository.getUserById(id));
     }
 
+    @Override
     @Transactional
     public UserModel findUserByEmailAddress(String emailAddress) {
         User user = userRepository.findByEmailAddress(emailAddress).orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return userAdapter.toUserModel(user);
+    }
+
+    @Override
+    @Transactional
+    public boolean isSuperior(int userId) {
+        int count = userRepository.countSuperiorById(userId);
+        return count != 0;
     }
 }
