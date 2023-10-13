@@ -11,9 +11,13 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated:false
     });
 
+    const logout =() =>{
+        console.log("Logout triggered")
+        setAuth({isAuthenticated:false})
+    }
 
     return (
-        <AuthContext.Provider value={{ auth, setAuth }}>
+        <AuthContext.Provider value={{ auth, setAuth, logout }}>
             {children}
         </AuthContext.Provider>
     )

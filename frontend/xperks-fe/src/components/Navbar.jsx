@@ -5,13 +5,19 @@ import {BsCurrencyExchange} from 'react-icons/bs'
 import Avatar from 'react-avatar';
 import { Link } from "react-router-dom";
 import Logo from './Logo';
+import useAuth from '../hooks/useAuth';
 
 const Navbar = () => {
 
     const [nav, setNav] = useState(true)
+    const {logout} = useAuth();
 
     const handleNav = () => {
         setNav(!nav);
+    };
+
+    const  handleLogout =() =>{
+        logout()
     };
 
   return (
@@ -30,7 +36,7 @@ const Navbar = () => {
                 <span className='ml-3'>username</span>
             </li>
             <li className='p4'>
-                <button className='bg-white text-black rounded-md p-1.5 ml-3 hover:bg-gray-300 flex items-center px-4'>
+                <button className='bg-white text-black rounded-md p-1.5 ml-3 hover:bg-gray-300 flex items-center px-4' onClick={handleLogout}>
                     <LuLogOut/>
                     <span className='ml-2'>Logout</span>
                 </button>
@@ -55,9 +61,9 @@ const Navbar = () => {
                     <span >username</span>
                 </li>
                 <li className='p-4 border-b border-b-gray-500 pl-20'>
-                    <button className='bg-white text-black rounded-md p-1.5 ml-3 hover:bg-gray-300 flex items-center px-4'>
+                    <button className='bg-white text-black rounded-md p-1.5 ml-3 hover:bg-gray-300 flex items-center px-4' onClick={handleLogout}>
                         <LuLogOut/>
-                        <span className='ml-2'>Logout</span>
+                        <span className='ml-2' >Logout</span>
                     </button>
                 </li>
                 <li className='p-4 mt-5 uppercase border-b border-b-gray-900'><Link to="/profile">Profile</Link></li>
