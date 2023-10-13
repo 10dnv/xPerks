@@ -40,25 +40,18 @@ const Login = () => {
     try {
         const response = await axios.post(LOGIN_URL, userData);
 
-        console.log(JSON.stringify(response?.data));
-        console.log(JSON.stringify(response));
-        const accessToken = response?.data?.token;
-        const firstName = response?.data.firstName
-        const id = response?.data.id
+        // console.log(JSON.stringify(response?.data));
+        // console.log(JSON.stringify(response));
 
-        // const roles = response?.data?.roles;
-
-        
         setAuth({
             user:user,
-            firstName:firstName,
-            token:accessToken,
+            firstName:response?.data.firstName,
+            lastName:response?.data.lastName,
+            token:response?.data?.token,
             isAuthenticated:true,
-            id:id
+            id:response?.data.id
         });
 
-        setUser('');
-        setPwd('');
         navigate("/");
     } catch (err) {
         if (!err?.response && err?.response != null) {

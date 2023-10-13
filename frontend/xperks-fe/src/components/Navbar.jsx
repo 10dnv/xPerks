@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 import {LuLogOut} from 'react-icons/lu'
 import {BsCurrencyExchange} from 'react-icons/bs'
@@ -6,11 +6,13 @@ import Avatar from 'react-avatar';
 import { Link } from "react-router-dom";
 import Logo from './Logo';
 import useAuth from '../hooks/useAuth';
+import axios from 'axios';
 
 const Navbar = () => {
 
     const [nav, setNav] = useState(true)
-    const {logout} = useAuth();
+    const {auth, logout} = useAuth();
+    const [isSuperior, setIsSuperior] = useState(false)
 
     const handleNav = () => {
         setNav(!nav);
@@ -19,6 +21,19 @@ const Navbar = () => {
     const  handleLogout =() =>{
         logout()
     };
+
+    // Check if logged user is superior to render extra page
+    useEffect(() => {
+        axios.get(`api/user/${auth.id}/superior` , { headers: {"Authorization" : `Bearer ${auth.token}`} })
+        .then(res => {
+            setIsSuperior(res.data)
+        })
+        .catch((error) => {
+        console.log("An error occured while checking if you are a superior")
+        console.log(error)
+        });
+    }, [])
+    
 
   return (
     <div className='text-white flex justify-between items-center h-[96px] max-w-[2300px] px-4' >
@@ -31,9 +46,9 @@ const Navbar = () => {
             </li>
             <li className='p-4'>
                 <span className='mx-2'>
-                    <Avatar size={45} name="Username" round={true} />
+                    <Avatar size={45} name={auth.firstName + " " + auth.lastName} round={true} />
                 </span>
-                <span className='ml-3'>username</span>
+                <span className='ml-3'>{auth.firstName + " " + auth.lastName}</span>
             </li>
             <li className='p4'>
                 <button className='bg-white text-black rounded-md p-1.5 ml-3 hover:bg-gray-300 flex items-center px-4' onClick={handleLogout}>
@@ -56,9 +71,9 @@ const Navbar = () => {
                 </li>
                 <li className='p-4 ' >
                     <span className='pr-5 ml-8'>
-                        <Avatar size={45} name="Username" round={true} />
+                        <Avatar size={45} name={auth.firstName + " " + auth.lastName}  round={true} />
                     </span>
-                    <span >username</span>
+                    <span >{auth.firstName + " " + auth.lastName} </span>
                 </li>
                 <li className='p-4 border-b border-b-gray-500 pl-20'>
                     <button className='bg-white text-black rounded-md p-1.5 ml-3 hover:bg-gray-300 flex items-center px-4' onClick={handleLogout}>
@@ -72,6 +87,7 @@ const Navbar = () => {
                 <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/recognise">Peer recognise</Link></li>
                 <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/redeem">Redeem points</Link></li>
                 <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/events">Upcoming events</Link></li>
+                <li className={isSuperior?'p-4 uppercase border-b border-b-gray-900': 'hidden'}><Link to="/approve">Approvals</Link></li>
             </ul>
         </div>
     </div>

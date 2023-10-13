@@ -6,13 +6,13 @@ export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState({
         user:'',
         firstName:'',
+        lastName:'',
         token:'',
         id:'',
         isAuthenticated:false
     });
 
     const logout =() =>{
-        console.log("Logout triggered")
         setAuth({isAuthenticated:false})
     }
 

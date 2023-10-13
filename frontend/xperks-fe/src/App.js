@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import NoPage from "./pages/NoPage";
 import Layout from "./pages/Layout";
 import Login from "./pages/Login";
+import Approve from "./pages/Approve";
 
 import RequireAuth from "./components/RequireAuth"
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/approve" element={<Approve />} />
         </Route>
         
 
