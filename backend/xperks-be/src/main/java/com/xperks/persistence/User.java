@@ -1,10 +1,10 @@
 package com.xperks.persistence;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -12,8 +12,11 @@ import java.util.Date;
 @AttributeOverride(name = "id", column = @Column(name = "user_id"))
 @Getter
 @Setter
+@SuperBuilder
+@AllArgsConstructor
 @NoArgsConstructor
 public class User extends BaseEntity {
+
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -28,21 +31,11 @@ public class User extends BaseEntity {
     private String emailAddress;
     private String password;
     @JoinColumn(name = "superior_id")
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("superior")
     private User superior;
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
-    private Wallet wallet;
+    private BigDecimal balance;
+    @Column(name = "erd_address")
+    private String erdAddress;
 
-    @Builder
-    public User(int id, String firstName, String lastName, Date dateOfBirth, Date employmentDate, String emailAddress, String password, User superior, Wallet wallet) {
-        super(id);
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.employmentDate = employmentDate;
-        this.emailAddress = emailAddress;
-        this.password = password;
-        this.superior = superior;
-        this.wallet = wallet;
-    }
 }

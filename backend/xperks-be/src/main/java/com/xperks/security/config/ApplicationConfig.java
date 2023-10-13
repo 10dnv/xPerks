@@ -1,5 +1,5 @@
 package com.xperks.security.config;
-import com.xperks.service.UserService;
+import com.xperks.service.UserServiceIF;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,16 +16,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private final UserService userService;
+    private final UserServiceIF userService;
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String emailAddress) {
-                return userService.findUserByEmailAddress(emailAddress);
-            }
-        };
+        return userService::findUserByEmailAddress;
     }
 
     @Bean
@@ -33,7 +28,7 @@ public class ApplicationConfig {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
-        return  authProvider;
+        return authProvider;
     }
 
     @Bean

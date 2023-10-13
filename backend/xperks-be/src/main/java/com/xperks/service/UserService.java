@@ -1,30 +1,38 @@
 package com.xperks.service;
 
+import com.xperks.adapter.UserAdapter;
+import com.xperks.dto.UserModel;
 import com.xperks.persistence.User;
 import com.xperks.repository.UserRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import java.util.List;
 
 @Service
-public class UserService {
+@RequiredArgsConstructor
+public class UserService implements UserServiceIF {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final UserAdapter userAdapter;
 
+    @Override
     @Transactional
-    public List<User> getUserList() {
-        return userRepository.findAll();
-    }
-    @Transactional
-    public User getUser(int id) {
-        return userRepository.getUserById(id);
+    public UserModel getUser(int id) {
+        return userAdapter.toUserModel(userRepository.getUserById(id));
     }
 
+    @Override
     @Transactional
-    public User findUserByEmailAddress(String emailAddress) {
-        return userRepository.findByEmailAddress(emailAddress).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    public UserModel findUserByEmailAddress(String emailAddress) {
+        User user = userRepository.findByEmailAddress(emailAddress).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return userAdapter.toUserModel(user);
+    }
+
+    @Override
+    @Transactional
+    public boolean isSuperior(int userId) {
+        int count = userRepository.countSuperiorById(userId);
+        return count != 0;
     }
 }

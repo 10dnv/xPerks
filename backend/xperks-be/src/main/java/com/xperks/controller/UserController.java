@@ -1,28 +1,25 @@
 package com.xperks.controller;
 
 import com.xperks.dto.UserModel;
-import com.xperks.persistence.User;
-import com.xperks.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import com.xperks.service.UserServiceIF;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
+@RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserServiceIF userService;
 
-    @GetMapping("/user")
-    public List<User> getUserList() {
-        return userService.getUserList();
-    }
-
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
+    @ResponseBody
     public UserModel getUser(@PathVariable int id) {
         return userService.getUser(id);
+    }
+
+    @GetMapping("/{id}/superior")
+    public boolean isSuperior(@PathVariable int id) {
+        return userService.isSuperior(id);
     }
 }

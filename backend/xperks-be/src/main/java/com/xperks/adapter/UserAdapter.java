@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class UserAdapter {
 
-    private final WalletAdapter walletAdapter;
-
     public UserModel toUserModel(User user) {
         return UserModel
                 .builder()
@@ -21,8 +19,7 @@ public class UserAdapter {
                 .lastName(user.getLastName())
                 .dateOfBirth(user.getDateOfBirth())
                 .employmentDate(user.getEmploymentDate())
-                .superior(user.getSuperior() != null ? toUserModel(user.getSuperior()) : null)
-                .wallet(user.getWallet() != null ? walletAdapter.toWalletModel(user.getWallet()) : null)
+                .superior(user.getSuperior() != null && user.getId() != user.getSuperior().getId() ? toUserModel(user.getSuperior()) : null)
                 .build();
     }
 
