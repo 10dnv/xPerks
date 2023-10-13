@@ -1,5 +1,7 @@
 package com.xperks.security.auth;
 
+import com.xperks.dto.auth.LoginRequest;
+import com.xperks.dto.auth.LoginResponse;
 import com.xperks.security.config.JwtService;
 import com.xperks.service.UserService;
 import jakarta.transaction.Transactional;

@@ -1,4 +1,4 @@
-package com.xperks.security.auth;
+package com.xperks.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

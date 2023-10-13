@@ -28,5 +28,5 @@ public class Transaction extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Status status;
     @Enumerated(EnumType.STRING)
-    private Points points;
+    private Points amount;
 }

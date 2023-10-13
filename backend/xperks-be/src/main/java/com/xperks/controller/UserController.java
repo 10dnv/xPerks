@@ -19,6 +19,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/superior")
+    @ResponseBody
     public boolean isSuperior(@PathVariable int id) {
         return userService.isSuperior(id);
     }

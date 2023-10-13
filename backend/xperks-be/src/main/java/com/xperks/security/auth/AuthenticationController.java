@@ -1,5 +1,7 @@
 package com.xperks.security.auth;
 
+import com.xperks.dto.auth.LoginRequest;
+import com.xperks.dto.auth.LoginResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

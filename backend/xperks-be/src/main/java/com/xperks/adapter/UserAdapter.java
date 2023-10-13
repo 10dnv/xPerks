@@ -1,5 +1,6 @@
 package com.xperks.adapter;
 
+import com.xperks.dto.UserMainInfo;
 import com.xperks.dto.UserModel;
 import com.xperks.persistence.User;
 import lombok.RequiredArgsConstructor;
@@ -19,20 +20,13 @@ public class UserAdapter {
                 .lastName(user.getLastName())
                 .dateOfBirth(user.getDateOfBirth())
                 .employmentDate(user.getEmploymentDate())
-                .superior(user.getSuperior() != null && user.getId() != user.getSuperior().getId() ? toUserModel(user.getSuperior()) : null)
+                .superior(getUserMainInfo(user.getSuperior()))
+                .balance(user.getBalance())
+                .erdAddress(user.getErdAddress())
                 .build();
     }
 
-    public User toUser(UserModel userModel) {
-        return User
-                .builder()
-                .id(userModel.getId())
-                .firstName(userModel.getFirstName())
-                .lastName(userModel.getLastName())
-                .dateOfBirth(userModel.getDateOfBirth())
-                .emailAddress(userModel.getEmailAddress())
-                .employmentDate(userModel.getEmploymentDate())
-                .superior(userModel.getSuperior() != null ? toUser(userModel.getSuperior()) : null)
-                .build();
+    static UserMainInfo getUserMainInfo(User user) {
+        return new UserMainInfo(user.getId(), user.getFirstName(), user.getLastName());
     }
 }

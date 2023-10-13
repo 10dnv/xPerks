@@ -24,6 +24,16 @@ public class UserService implements UserServiceIF {
 
     @Override
     @Transactional
+    public User getUserById(int id) {
+        User user = userRepository.getUserById(id);
+        if (user == null) {
+            throw new IllegalArgumentException("No user found with id " + id);
+        }
+        return user;
+    }
+
+    @Override
+    @Transactional
     public UserModel findUserByEmailAddress(String emailAddress) {
         User user = userRepository.findByEmailAddress(emailAddress).orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return userAdapter.toUserModel(user);
@@ -35,4 +45,5 @@ public class UserService implements UserServiceIF {
         int count = userRepository.countSuperiorById(userId);
         return count != 0;
     }
+
 }

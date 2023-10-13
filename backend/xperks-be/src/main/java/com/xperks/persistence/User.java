@@ -1,10 +1,9 @@
 package com.xperks.persistence;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.xperks.dto.Points;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
-
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -31,10 +30,11 @@ public class User extends BaseEntity {
     private String emailAddress;
     private String password;
     @JoinColumn(name = "superior_id")
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JsonIgnoreProperties("superior")
     private User superior;
-    private BigDecimal balance;
+    @Enumerated(EnumType.STRING)
+    private Points balance;
     @Column(name = "erd_address")
     private String erdAddress;
 

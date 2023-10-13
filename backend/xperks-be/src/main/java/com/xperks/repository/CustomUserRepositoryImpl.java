@@ -1,11 +1,7 @@
 package com.xperks.repository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import com.xperks.service.EntityManagerSupport;
 
-public class CustomUserRepositoryImpl implements  CustomUserRepository{
-
-    @PersistenceContext
-    private EntityManager entityManager;
+public class CustomUserRepositoryImpl extends EntityManagerSupport implements CustomUserRepository{
 
     @Override
     public int countSuperiorById(int userId) {

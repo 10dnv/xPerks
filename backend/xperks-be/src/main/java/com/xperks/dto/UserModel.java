@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-
 import java.util.Date;
 
 
@@ -18,5 +17,7 @@ public class UserModel extends CustomUserDetails {
     private Date dateOfBirth;
     private Date employmentDate;
     @JsonIgnoreProperties("superior")
-    private UserModel superior;
+    private UserMainInfo superior;
+    private Points balance;
+    private String erdAddress;
 }

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum Points {
 
+    _0(0),
     _50(50),
     _250(250),
     _100(100),
