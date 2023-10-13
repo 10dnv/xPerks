@@ -1,21 +1,22 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import useAuth from '../hooks/useAuth';
+import axios from 'axios';
 
 const Profile = () => {
     const [userData, setUserData] = useState([]);
+    const {auth} = useAuth()
 
     useEffect(() => {
-        fetch('/api/user/2')
-          .then((response) => response.json())
-          .then((data) => {
-             console.log(data);
-             setUserData(data);
-          })
-          .catch((err) => {
-             console.log(err.message);
-          });
-        }, []);
-
+        axios.get(`/api/user/${auth.id}` , { headers: {"Authorization" : `Bearer ${auth.token}`} })
+        .then(res => {
+        setUserData(res.data)
+        })
+        .catch((error) => {
+        console.log(error)
+        });
+    }, [])
+  
   return (
     <div className='text-white h-[90vh] mx-10 w-screen'>
         <div className='flex flex-col items-center justify-center h-96 '>

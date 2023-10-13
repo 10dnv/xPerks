@@ -1,9 +1,3 @@
-import React from "react";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-import Hero from "./components/Hero";
-
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
@@ -11,21 +5,27 @@ import NoPage from "./pages/NoPage";
 import Layout from "./pages/Layout";
 import Login from "./pages/Login";
 
-function App() {
-  const token = localStorage.getItem('accessToken');
+import RequireAuth from "./components/RequireAuth"
 
-  if(token) {
-    return <Login />
-  }
-  
+function App() {
+
   return (
     <BrowserRouter>
       <Routes>
+        {/* public routes */}
+        <Route path="/login" element={<Login />} />
+
+        {/* protected routes */}
+        <Route element={<RequireAuth />}>
           <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
-          <Route path="login" element={<Dashboard />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="*" element={<NoPage />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+        
+
+        {/* catch the rest */}
+        <Route path="*" element={<NoPage />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
