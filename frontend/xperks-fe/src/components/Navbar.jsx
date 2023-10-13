@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Logo from './Logo';
 import useAuth from '../hooks/useAuth';
 import axios from 'axios';
+import Price from './Price';
 
 const Navbar = () => {
 
@@ -42,7 +43,8 @@ const Navbar = () => {
             
             <li className='p-4 mr-20 flex'>
                 <BsCurrencyExchange size={20}/>
-                <span className='pl-3'>Rate 1p = 0.025 EGLD</span>
+             
+                <span className='pl-3'>Rate 1p = <Price/> EGLD</span>
             </li>
             <li className='p-4'>
                 <span className='mx-2'>
@@ -67,7 +69,7 @@ const Navbar = () => {
             <ul className='p-4'>
                 <li className='p-4 ml-7 flex'>
                     <BsCurrencyExchange size={20}/>
-                    <span className='pl-3'>Rate: 1p = 0.025 EGLD</span>
+                    <span className='pl-3'>Rate: 1p = <Price/> EGLD</span>
                 </li>
                 <li className='p-4 ' >
                     <span className='pr-5 ml-8'>

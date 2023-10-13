@@ -18,11 +18,10 @@ const Profile = () => {
     }, [])
   
   return (
-    // <div className='text-white h-[80vh] mx-10 w-screen  rounded-md   bg-gradient-to-t from-[#090a0a]  shadow-elrond-900 shadow-2xl'>
-    <div className='text-white h-[80vh] mx-10 w-screen  rounded-md    shadow-2xl'>
+    <div className='text-white h-[80vh] mx-10 w-screen  rounded-md  shadow-elrond-900 shadow-2xl'>
         <div className='flex flex-col items-center justify-center h-96 '>
-            <h1 className='text-[50px]  py-4 text-[#8D8D8D]'>My Profile</h1>
-            <ul>
+            <h1 className='text-[50px]  py-4 text-[#8D8D8D] '>My Profile</h1>
+            <ul className='text-3xl'>
                 <li>First name: {userData.firstName} </li>
                 <li>Last name: {userData.lastName} </li>
                 <li>Email: {userData.emailAddress} </li>
