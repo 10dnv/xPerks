@@ -3,24 +3,25 @@ package com.xperks.controller;
 import com.xperks.dto.UserModel;
 import com.xperks.persistence.User;
 import com.xperks.service.UserServiceIF;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
+@RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private UserServiceIF userService;
+    private final UserServiceIF userService;
 
-    @GetMapping("/user")
+    @GetMapping
     @ResponseBody
     public List<User> getUserList() {
         return userService.getUserList();
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     @ResponseBody
     public UserModel getUser(@PathVariable int id) {
         return userService.getUser(id);
