@@ -8,4 +8,5 @@ public interface UserServiceIF {
     User getUserById(int id);
     UserModel findUserByEmailAddress(String emailAddress);
     boolean isSuperior(int userId);
+    void changeErdAddress(int id, String erdAddress);
 }

@@ -6,12 +6,13 @@ import com.xperks.persistence.User;
 import com.xperks.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserService implements UserServiceIF {
+public class UserService extends EntityManagerSupport implements UserServiceIF {
 
     private final UserRepository userRepository;
     private final UserAdapter userAdapter;
@@ -45,5 +46,17 @@ public class UserService implements UserServiceIF {
         int count = userRepository.countSuperiorById(userId);
         return count != 0;
     }
+
+    @Override
+    @Transactional
+    public void changeErdAddress(int id, String erdAddress) {
+        if (StringUtils.isBlank(erdAddress)) {
+            throw new IllegalArgumentException("erd address is missing");
+        }
+        User user = getUserById(id);
+        user.setErdAddress(erdAddress);
+        entityManager.persist(user);
+    }
+
 
 }

@@ -23,4 +23,9 @@ public class UserController {
     public boolean isSuperior(@PathVariable int id) {
         return userService.isSuperior(id);
     }
+
+    @PutMapping("/{id}/erd-address")
+    public void changeErdAddress(@PathVariable int id, @RequestParam String erdAddress) {
+        userService.changeErdAddress(id, erdAddress);
+    }
 }
