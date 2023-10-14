@@ -15,4 +15,5 @@ public class TransactionModel {
     private UserMainInfo approver;
     private Status status;
     private Points amount;
+    private String description;
 }

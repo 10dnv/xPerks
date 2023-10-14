@@ -3,6 +3,7 @@ package com.xperks.persistence;
 import com.xperks.dto.Points;
 import com.xperks.dto.Status;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -35,4 +36,7 @@ public class Transaction extends BaseEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Points amount;
+
+    @Size(max = 500)
+    private String description;
 }

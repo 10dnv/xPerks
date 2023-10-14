@@ -5,6 +5,7 @@ CREATE TABLE transaction(
     approver_id              BIGINT NOT NULL,
     status                   VARCHAR(50) NOT NULL,
     amount                   VARCHAR(10) NOT NULL,
+    description              VARCHAR(500),
     CONSTRAINT PK_Transaction PRIMARY KEY(transaction_id),
     CONSTRAINT FK_User_Sender FOREIGN KEY(sender_id) REFERENCES user_details(user_id),
     CONSTRAINT FK_User_Receiver FOREIGN KEY(receiver_id) REFERENCES user_details(user_id),

@@ -18,6 +18,7 @@ public class TransactionAdapter {
                 .approver(UserAdapter.getUserMainInfo(transaction.getApprover()))
                 .status(transaction.getStatus())
                 .amount(transaction.getAmount())
+                .description(transaction.getDescription())
                 .build();
     }
 }
