@@ -6,6 +6,8 @@ import com.xperks.service.TransactionServiceIF;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/transaction")
 @RequiredArgsConstructor
@@ -18,5 +20,11 @@ public class TransactionController {
     public TransactionModel createTransaction(@PathVariable int senderId,
                                               @RequestBody TransactionRequest transactionRequest) {
         return transactionService.createTransaction(senderId, transactionRequest);
+    }
+
+    @GetMapping("/{id}/history")
+    @ResponseBody
+    public List<TransactionModel> getTransactionHistory(@PathVariable int id) {
+        return transactionService.getTransactionHistory(id);
     }
 }

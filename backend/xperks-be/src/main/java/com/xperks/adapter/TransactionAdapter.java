@@ -5,6 +5,9 @@ import com.xperks.persistence.Transaction;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class TransactionAdapter {
@@ -20,5 +23,11 @@ public class TransactionAdapter {
                 .amount(transaction.getAmount())
                 .description(transaction.getDescription())
                 .build();
+    }
+    
+    public List<TransactionModel> toTransactionModelList(List<Transaction> transactions) {
+        List<TransactionModel> transactionList = new ArrayList<>();
+        transactions.forEach(transaction -> transactionList.add(toTransactionModel(transaction)));
+        return transactionList;
     }
 }

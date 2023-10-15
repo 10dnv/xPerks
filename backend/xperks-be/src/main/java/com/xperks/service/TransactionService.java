@@ -6,10 +6,12 @@ import com.xperks.dto.TransactionModel;
 import com.xperks.dto.TransactionRequest;
 import com.xperks.persistence.Transaction;
 import com.xperks.persistence.User;
+import com.xperks.repository.TransactionRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -18,6 +20,7 @@ public class TransactionService extends EntityManagerSupport implements Transact
 
     private final UserServiceIF userService;
     private final TransactionAdapter transactionAdapter;
+    private final TransactionRepository transactionRepository;
 
     @Override
     @Transactional
@@ -41,6 +44,14 @@ public class TransactionService extends EntityManagerSupport implements Transact
                 .build();
         entityManager.persist(transaction);
         return transactionAdapter.toTransactionModel(transaction);
+    }
+
+    @Override
+    @Transactional
+    public List<TransactionModel> getTransactionHistory(int id) {
+        User user = userService.getUserById(id);
+        List<Transaction> transactions = transactionRepository.getTransactionHistoryListForUser(user);
+        return transactionAdapter.toTransactionModelList(transactions);
     }
 
     private void validateTransactionDetails(TransactionRequest transactionRequest) {
