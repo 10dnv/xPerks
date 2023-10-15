@@ -22,6 +22,7 @@ public class TransactionAdapter {
                 .status(transaction.getStatus())
                 .amount(transaction.getAmount())
                 .description(transaction.getDescription())
+                .type(transaction.getType())
                 .build();
     }
     

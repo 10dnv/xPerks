@@ -14,4 +14,9 @@ public class TransactionRequest {
 
     @NotNull
     private Points amount;
+
+    private String description;
+
+    @NotNull
+    private TransactionType type;
 }

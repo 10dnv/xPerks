@@ -6,6 +6,7 @@ CREATE TABLE transaction(
     status                   VARCHAR(50) NOT NULL,
     amount                   VARCHAR(10) NOT NULL,
     description              VARCHAR(500),
+    type                     VARCHAR(50) NOT NULL,
     CONSTRAINT PK_Transaction PRIMARY KEY(transaction_id),
     CONSTRAINT FK_User_Sender FOREIGN KEY(sender_id) REFERENCES user_details(user_id),
     CONSTRAINT FK_User_Receiver FOREIGN KEY(receiver_id) REFERENCES user_details(user_id),

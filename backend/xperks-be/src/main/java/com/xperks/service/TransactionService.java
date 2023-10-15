@@ -41,6 +41,8 @@ public class TransactionService extends EntityManagerSupport implements Transact
                 .approver(approver)
                 .status(Status.PENDING)
                 .amount(transactionRequest.getAmount())
+                .description(transactionRequest.getDescription())
+                .type(transactionRequest.getType())
                 .build();
         entityManager.persist(transaction);
         return transactionAdapter.toTransactionModel(transaction);

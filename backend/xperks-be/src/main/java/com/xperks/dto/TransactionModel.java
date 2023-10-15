@@ -16,4 +16,5 @@ public class TransactionModel {
     private Status status;
     private Points amount;
     private String description;
+    private TransactionType type;
 }
