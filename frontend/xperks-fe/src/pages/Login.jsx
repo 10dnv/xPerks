@@ -43,6 +43,7 @@ const Login = () => {
         // console.log(JSON.stringify(response?.data));
         // console.log(JSON.stringify(response));
 
+        console.log(response?.data?.token)
         setAuth({
             user:user,
             firstName:response?.data.firstName,
@@ -78,7 +79,7 @@ const Login = () => {
             <form onSubmit={handleFormSubmit}>
                 <div className='flex p-4'>
                     <h3 className='font-bold text-elrond'>USERNAME</h3>
-                    <input className='mx-4 w-[100%] text-black px-2' autocomplete='on' value={user}
+                    <input className='mx-4 w-[100%] text-black px-2' autoComplete='true' value={user}
                      onChange={handleOnChangeUser}/>
                 </div>
                 <div className='flex p-4'>
