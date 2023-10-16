@@ -10,6 +10,8 @@ function Recognize() {
 
     const {auth} = useAuth()
     const [inputUser, setInputUser] = useState("");
+    const [transType, setTransType] = useState("")
+    const [amount, setAmount] = useState("")
 
     
 
@@ -19,8 +21,8 @@ function Recognize() {
         
         const userData = {
             "receiverId": inputUser,
-            "type": "P2P",
-            "amount": "_100",
+            "type": transType,
+            "amount": amount,
             "description": ""
         }
 
@@ -56,6 +58,15 @@ function Recognize() {
         { value: '_500', label: '500' }
       ]
 
+      const handleTransTypeChange = (e) => {
+        setTransType(e.value);
+        console.log(e.value);
+      };
+
+      const handleAmountChange = (e) => {
+        setAmount(e.value);
+        console.log(e.value);
+      };
 
 
   return (
@@ -74,7 +85,7 @@ function Recognize() {
                             <Select
                             options={options_transaction_type}
                             className='w-2/4 text-black'
-                            // onChange={handleUserChange}
+                            onChange={handleTransTypeChange}
                             />
                         </dd>
 
@@ -83,7 +94,7 @@ function Recognize() {
                             <Select
                                 options={options_point_amount}
                                 className='w-2/4 text-black'
-                                // onChange={handleUserChange}
+                                onChange={handleAmountChange}
                                 />
                         </dd>
 
