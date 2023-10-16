@@ -67,7 +67,9 @@ public class UserService extends EntityManagerSupport implements UserServiceIF {
     @Override
     @Transactional
     public List<UserMainInfo> getUserList() {
-        return userAdapter.toUserMainInfoList(userRepository.findAll());
+        /* get all users that can be recognized (witho */
+        List<User> users = userRepository.getListWithoutLoggedUser(AuthUtil.getAuthenticatedUserId());
+        return userAdapter.toUserMainInfoList(users);
     }
 
 

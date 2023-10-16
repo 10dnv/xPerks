@@ -1,6 +1,5 @@
 package com.xperks.persistence;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.xperks.dto.Points;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -46,8 +45,7 @@ public class User extends BaseEntity {
     @JsonIgnoreProperties("superior")
     private User superior;
 
-    @Enumerated(EnumType.STRING)
-    private Points balance;
+    private int balance;
 
     @Column(name = "erd_address")
     @Size(max = 250)

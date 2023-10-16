@@ -17,4 +17,11 @@ public class CustomUserRepositoryImpl extends EntityManagerSupport implements Cu
                 .getSingleResult())
                 .intValue();
     }
+
+    @Override
+    public List<User> getListWithoutLoggedUser(int id) {
+        return entityManager.createQuery("FROM User WHERE id <> :id", User.class)
+                .setParameter("id", id)
+                .getResultList();
+    }
 }

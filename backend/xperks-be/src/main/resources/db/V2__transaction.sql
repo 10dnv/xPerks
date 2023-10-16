@@ -11,7 +11,8 @@ CREATE TABLE transaction(
     CONSTRAINT FK_User_Sender FOREIGN KEY(sender_id) REFERENCES user_details(user_id),
     CONSTRAINT FK_User_Receiver FOREIGN KEY(receiver_id) REFERENCES user_details(user_id),
     CONSTRAINT FK_User_Approver FOREIGN KEY(approver_id) REFERENCES user_details(user_id),
-    CONSTRAINT Ck_Sender_Receiver CHECK (sender_id <> receiver_id AND receiver_id <> approver_id AND sender_id <> approver_id)
+    CONSTRAINT Ck_Sender_Receiver CHECK (sender_id <> receiver_id AND receiver_id <> approver_id AND sender_id <> approver_id),
+    CONSTRAINT UNQ_Transaction UNIQUE (sender_id, receiver_id, status, type)
 );
 
 CREATE SEQUENCE transaction_seq

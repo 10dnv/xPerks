@@ -8,7 +8,7 @@ CREATE TABLE user_details (
     password                VARCHAR(100) NOT NULL,
     superior_id             BIGINT NOT NULL,
     erd_address             VARCHAR(250) DEFAULT NULL,
-    balance                 VARCHAR(10) DEFAULT '_0',
+    balance                 INT DEFAULT 0,
     CONSTRAINT PK_UserDetails PRIMARY KEY(user_id),
     CONSTRAINT FK_User_Superior FOREIGN KEY(superior_id) REFERENCES user_details(user_id),
     CONSTRAINT UQ_User_Superior UNIQUE(user_id, superior_id)

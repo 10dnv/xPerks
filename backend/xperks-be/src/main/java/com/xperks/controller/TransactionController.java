@@ -2,6 +2,7 @@ package com.xperks.controller;
 
 import com.xperks.dto.TransactionModel;
 import com.xperks.dto.TransactionRequest;
+import com.xperks.dto.TransactionResponseType;
 import com.xperks.service.TransactionServiceIF;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -31,5 +32,11 @@ public class TransactionController {
     @ResponseBody
     public List<TransactionModel> getRequestsForApproval() {
         return transactionService.getRequestsForApproval();
+    }
+
+
+    @PutMapping("/{id}/handle-request")
+    public void handleTransaction(@PathVariable int id, @RequestParam TransactionResponseType responseType) {
+        transactionService.handleTransaction(id, responseType);
     }
 }

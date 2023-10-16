@@ -1,9 +1,7 @@
 package com.xperks.service;
 
 import com.xperks.adapter.TransactionAdapter;
-import com.xperks.dto.Status;
-import com.xperks.dto.TransactionModel;
-import com.xperks.dto.TransactionRequest;
+import com.xperks.dto.*;
 import com.xperks.persistence.Transaction;
 import com.xperks.persistence.User;
 import com.xperks.repository.TransactionRepository;
@@ -71,6 +69,25 @@ public class TransactionService extends EntityManagerSupport implements Transact
         /* get all in pending transactions where logged user is approver */
         List<Transaction> transactions = transactionRepository.getTransactionsToBeApproved(user);
         return transactionAdapter.toTransactionModelList(transactions);
+    }
+
+    @Override
+    @Transactional
+    public void handleTransaction(int id, TransactionResponseType responseType) {
+        int loggedUserId = AuthUtil.getAuthenticatedUserId();
+        Transaction transaction = entityManager.find(Transaction.class, id);
+        if (transaction.getApprover().getId() != loggedUserId) {
+            throw new IllegalArgumentException("Current user cannot validate transaction with id " + transaction.getId());
+        }
+        if (TransactionResponseType.APPROVE.equals(responseType)) {
+            transaction.setStatus(Status.APPROVED);
+            User user = transaction.getReceiver();
+            user.setBalance(user.getBalance() + transaction.getAmount().getPoints());
+            entityManager.persist(user);
+        } else {
+            transaction.setStatus(Status.DENIED);
+        }
+        entityManager.persist(transaction);
     }
 
     private void validateTransactionDetails(int senderId, TransactionRequest transactionRequest) {

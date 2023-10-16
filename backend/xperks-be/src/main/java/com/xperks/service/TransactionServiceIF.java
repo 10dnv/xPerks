@@ -1,7 +1,6 @@
 package com.xperks.service;
 
-import com.xperks.dto.TransactionModel;
-import com.xperks.dto.TransactionRequest;
+import com.xperks.dto.*;
 
 import java.util.List;
 
@@ -11,4 +10,6 @@ public interface TransactionServiceIF {
     List<TransactionModel> getTransactionHistory();
 
     List<TransactionModel> getRequestsForApproval();
+
+    void handleTransaction(int id, TransactionResponseType responseType);
 }

@@ -18,6 +18,6 @@ public class UserModel extends CustomUserDetails {
     private Date employmentDate;
     @JsonIgnoreProperties("superior")
     private UserMainInfo superior;
-    private Points balance;
+    private int balance;
     private String erdAddress;
 }
