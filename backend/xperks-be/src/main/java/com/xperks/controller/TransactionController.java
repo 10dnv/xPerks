@@ -27,4 +27,10 @@ public class TransactionController {
     public List<TransactionModel> getTransactionHistory(@PathVariable int id) {
         return transactionService.getTransactionHistory(id);
     }
+
+    @GetMapping("/{id}/approval-request")
+    @ResponseBody
+    public List<TransactionModel> getRequestsForApproval(@PathVariable int id) {
+        return transactionService.getRequestsForApproval(id);
+    }
 }

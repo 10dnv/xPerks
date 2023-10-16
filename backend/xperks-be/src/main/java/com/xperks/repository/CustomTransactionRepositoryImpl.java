@@ -15,4 +15,12 @@ public class CustomTransactionRepositoryImpl extends EntityManagerSupport implem
                 .setParameter("user", user)
                 .getResultList();
     }
+
+    @Override
+    public List<Transaction> getTransactionsToBeApproved(User user) {
+        return entityManager
+                .createQuery("FROM Transaction WHERE approver = :user AND status = 'PENDING'", Transaction.class)
+                .setParameter("user", user)
+                .getResultList();
+    }
 }

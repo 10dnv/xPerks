@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface CustomTransactionRepository {
     List<Transaction> getTransactionHistoryListForUser(User user);
+
+    List<Transaction> getTransactionsToBeApproved(User user);
 }

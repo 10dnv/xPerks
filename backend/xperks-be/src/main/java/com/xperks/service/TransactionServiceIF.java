@@ -9,4 +9,6 @@ public interface TransactionServiceIF {
     TransactionModel createTransaction(int senderId, TransactionRequest transactionRequest);
 
     List<TransactionModel> getTransactionHistory(int id);
+
+    List<TransactionModel> getRequestsForApproval(int id);
 }

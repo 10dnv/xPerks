@@ -56,6 +56,14 @@ public class TransactionService extends EntityManagerSupport implements Transact
         return transactionAdapter.toTransactionModelList(transactions);
     }
 
+    @Override
+    @Transactional
+    public List<TransactionModel> getRequestsForApproval(int id) {
+        User user = userService.getUserById(id);
+        List<Transaction> transactions = transactionRepository.getTransactionsToBeApproved(user);
+        return transactionAdapter.toTransactionModelList(transactions);
+    }
+
     private void validateTransactionDetails(int senderId, TransactionRequest transactionRequest) {
         if (transactionRequest == null) {
             throw new IllegalArgumentException("Data about transaction is missing");
