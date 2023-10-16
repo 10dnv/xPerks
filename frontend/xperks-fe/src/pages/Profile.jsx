@@ -28,7 +28,7 @@ const Profile = () => {
 
          await axios({
             method: 'PUT',
-            url: `/api/user/${auth.id}/erd-address`,
+            url: '/api/user/erd-address',
             headers: {
               Authorization: `Bearer ${auth.token}}`
             },
@@ -70,7 +70,7 @@ const Profile = () => {
                     <dt>Superior:</dt>
                     <dd className="text-left">{userData.superior?.firstName + " " + userData.superior?.lastName}</dd>
                     
-                    <dt>Elrond wallet:</dt>
+                    <dt>MultiversX wallet:</dt>
                     <dd className="text-left">
                         <input className='text-black px-2' type='text' ref={inputRef_mvsx_addr} value={inputAddressVal} onChange={inputAddrHandler}></input>
                     </dd>
