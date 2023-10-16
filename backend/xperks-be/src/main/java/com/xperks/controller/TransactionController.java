@@ -15,22 +15,21 @@ public class TransactionController {
 
     private final TransactionServiceIF transactionService;
 
-    @PostMapping("/{senderId}")
+    @PostMapping
     @ResponseBody
-    public TransactionModel createTransaction(@PathVariable int senderId,
-                                              @RequestBody TransactionRequest transactionRequest) {
-        return transactionService.createTransaction(senderId, transactionRequest);
+    public TransactionModel createTransaction(@RequestBody TransactionRequest transactionRequest) {
+        return transactionService.createTransaction(transactionRequest);
     }
 
-    @GetMapping("/{id}/history")
+    @GetMapping("/history")
     @ResponseBody
-    public List<TransactionModel> getTransactionHistory(@PathVariable int id) {
-        return transactionService.getTransactionHistory(id);
+    public List<TransactionModel> getTransactionHistory() {
+        return transactionService.getTransactionHistory();
     }
 
-    @GetMapping("/{id}/approval-request")
+    @GetMapping("/approval-request")
     @ResponseBody
-    public List<TransactionModel> getRequestsForApproval(@PathVariable int id) {
-        return transactionService.getRequestsForApproval(id);
+    public List<TransactionModel> getRequestsForApproval() {
+        return transactionService.getRequestsForApproval();
     }
 }

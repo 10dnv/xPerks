@@ -6,9 +6,9 @@ import com.xperks.dto.TransactionRequest;
 import java.util.List;
 
 public interface TransactionServiceIF {
-    TransactionModel createTransaction(int senderId, TransactionRequest transactionRequest);
+    TransactionModel createTransaction(TransactionRequest transactionRequest);
 
-    List<TransactionModel> getTransactionHistory(int id);
+    List<TransactionModel> getTransactionHistory();
 
-    List<TransactionModel> getRequestsForApproval(int id);
+    List<TransactionModel> getRequestsForApproval();
 }

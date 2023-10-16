@@ -5,6 +5,7 @@ import com.xperks.dto.UserMainInfo;
 import com.xperks.dto.UserModel;
 import com.xperks.persistence.User;
 import com.xperks.repository.UserRepository;
+import com.xperks.security.AuthUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -45,18 +46,20 @@ public class UserService extends EntityManagerSupport implements UserServiceIF {
 
     @Override
     @Transactional
-    public boolean isSuperior(int userId) {
-        int count = userRepository.countSuperiorById(userId);
+    public boolean isSuperior() {
+        /* check if current user is someone's superior */
+        int count = userRepository.countSuperiorById(AuthUtil.getAuthenticatedUserId());
         return count != 0;
     }
 
     @Override
     @Transactional
-    public void changeErdAddress(int id, String erdAddress) {
+    public void changeErdAddress(String erdAddress) {
         if (StringUtils.isBlank(erdAddress)) {
             throw new IllegalArgumentException("erd address is missing");
         }
-        User user = getUserById(id);
+        /* change erd address for current user */
+        User user = getUserById(AuthUtil.getAuthenticatedUserId());
         user.setErdAddress(erdAddress);
         entityManager.persist(user);
     }

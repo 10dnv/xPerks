@@ -7,10 +7,12 @@ import com.xperks.dto.TransactionRequest;
 import com.xperks.persistence.Transaction;
 import com.xperks.persistence.User;
 import com.xperks.repository.TransactionRepository;
+import com.xperks.security.AuthUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,9 +26,10 @@ public class TransactionService extends EntityManagerSupport implements Transact
 
     @Override
     @Transactional
-    public TransactionModel createTransaction(int senderId, TransactionRequest transactionRequest) {
-        validateTransactionDetails(senderId, transactionRequest);
-        User sender = userService.getUserById(senderId);
+    public TransactionModel createTransaction(TransactionRequest transactionRequest) {
+        int currentUserId = AuthUtil.getAuthenticatedUserId();
+        validateTransactionDetails(currentUserId, transactionRequest);
+        User sender = userService.getUserById(currentUserId);
         User receiver = userService.getUserById(transactionRequest.getReceiverId());
         User approver = sender.getSuperior();
         Objects.requireNonNull(approver, "Superior is missing");
@@ -50,16 +53,22 @@ public class TransactionService extends EntityManagerSupport implements Transact
 
     @Override
     @Transactional
-    public List<TransactionModel> getTransactionHistory(int id) {
-        User user = userService.getUserById(id);
+    public List<TransactionModel> getTransactionHistory() {
+        /* get all transactions for logged user  */
+        User user = userService.getUserById(AuthUtil.getAuthenticatedUserId());
         List<Transaction> transactions = transactionRepository.getTransactionHistoryListForUser(user);
         return transactionAdapter.toTransactionModelList(transactions);
     }
 
     @Override
     @Transactional
-    public List<TransactionModel> getRequestsForApproval(int id) {
-        User user = userService.getUserById(id);
+    public List<TransactionModel> getRequestsForApproval() {
+        /* only superiors can approve transactions */
+        if (!userService.isSuperior()) {
+            return Collections.emptyList();
+        }
+        User user = userService.getUserById(AuthUtil.getAuthenticatedUserId());
+        /* get all in pending transactions where logged user is approver */
         List<Transaction> transactions = transactionRepository.getTransactionsToBeApproved(user);
         return transactionAdapter.toTransactionModelList(transactions);
     }

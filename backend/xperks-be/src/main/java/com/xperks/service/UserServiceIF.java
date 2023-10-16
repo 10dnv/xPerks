@@ -13,9 +13,9 @@ public interface UserServiceIF {
     
     UserModel findUserByEmailAddress(String emailAddress);
 
-    boolean isSuperior(int userId);
+    boolean isSuperior();
 
-    void changeErdAddress(int id, String erdAddress);
+    void changeErdAddress(String erdAddress);
 
     List<UserMainInfo> getUserList(String searchValue);
 }

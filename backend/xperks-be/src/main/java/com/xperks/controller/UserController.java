@@ -21,15 +21,15 @@ public class UserController {
         return userService.getUser(id);
     }
 
-    @GetMapping("/{id}/superior")
+    @GetMapping("/superior")
     @ResponseBody
-    public boolean isSuperior(@PathVariable int id) {
-        return userService.isSuperior(id);
+    public boolean isSuperior() {
+        return userService.isSuperior();
     }
 
-    @PutMapping("/{id}/erd-address")
-    public void changeErdAddress(@PathVariable int id, @RequestParam String erdAddress) {
-        userService.changeErdAddress(id, erdAddress);
+    @PutMapping("/erd-address")
+    public void changeErdAddress(@RequestParam String erdAddress) {
+        userService.changeErdAddress(erdAddress);
     }
 
     @GetMapping("/list")
