@@ -25,7 +25,7 @@ const Navbar = () => {
 
     // Check if logged user is superior to render extra page
     useEffect(() => {
-        axios.get(`api/user/${auth.id}/superior` , { headers: {"Authorization" : `Bearer ${auth.token}`} })
+        axios.get('api/user/superior' , { headers: {"Authorization" : `Bearer ${auth.token}`} })
         .then(res => {
             setIsSuperior(res.data)
         })
@@ -86,7 +86,7 @@ const Navbar = () => {
                 <li className='p-4 mt-5 uppercase border-b border-b-gray-900'><Link to="/profile">Profile</Link></li>
                 <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/history">Point History</Link></li>
                 <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/balance">Point Balance</Link></li>
-                <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/recognise">Peer recognise</Link></li>
+                <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/recognize">Peer recognize</Link></li>
                 <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/redeem">Redeem points</Link></li>
                 <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/events">Upcoming events</Link></li>
                 <li className={isSuperior?'p-4 uppercase border-b border-b-gray-900': 'hidden'}><Link to="/approve">Approvals</Link></li>

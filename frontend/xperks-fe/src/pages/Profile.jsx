@@ -21,7 +21,7 @@ const Profile = () => {
         .catch((error) => {
         console.log(error)
         });
-    }, [userData.erdAddress])
+    }, [])
     
 
     const  updateAddrHandle = async () =>{
