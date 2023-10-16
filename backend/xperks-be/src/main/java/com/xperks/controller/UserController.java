@@ -34,7 +34,7 @@ public class UserController {
 
     @GetMapping("/list")
     @ResponseBody
-    public List<UserMainInfo> getUserList(String searchValue) {
-        return userService.getUserList(searchValue);
+    public List<UserMainInfo> getUserList() {
+        return userService.getUserList();
     }
 }

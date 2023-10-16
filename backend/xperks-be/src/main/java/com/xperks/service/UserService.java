@@ -66,11 +66,8 @@ public class UserService extends EntityManagerSupport implements UserServiceIF {
 
     @Override
     @Transactional
-    public List<UserMainInfo> getUserList(String searchValue) {
-        if (StringUtils.isBlank(searchValue)) {
-            return userAdapter.toUserMainInfoList(userRepository.findAll());
-        }
-        return userAdapter.toUserMainInfoList(userRepository.getUserByName(searchValue));
+    public List<UserMainInfo> getUserList() {
+        return userAdapter.toUserMainInfoList(userRepository.findAll());
     }
 
 

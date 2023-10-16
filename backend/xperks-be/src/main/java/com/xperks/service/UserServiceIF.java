@@ -17,5 +17,5 @@ public interface UserServiceIF {
 
     void changeErdAddress(String erdAddress);
 
-    List<UserMainInfo> getUserList(String searchValue);
+    List<UserMainInfo> getUserList();
 }

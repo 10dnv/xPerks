@@ -17,15 +17,4 @@ public class CustomUserRepositoryImpl extends EntityManagerSupport implements Cu
                 .getSingleResult())
                 .intValue();
     }
-
-    @Override
-    public List<User> getUserByName(String searchValue) {
-        if (StringUtils.isBlank(searchValue)) {
-            return Collections.emptyList();
-        }
-        return entityManager
-                .createQuery("FROM User WHERE LOWER(firstName) LIKE LOWER(:name) OR LOWER(lastName) LIKE LOWER(:name)", User.class)
-                .setParameter("name", "%" + searchValue + "%")
-                .getResultList();
-    }
 }
