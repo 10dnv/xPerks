@@ -16,9 +16,9 @@ public class TransactionAdapter {
         return  TransactionModel
                 .builder()
                 .id(transaction.getId())
-                .sender(UserAdapter.getUserMainInfo(transaction.getSender()))
-                .receiver(UserAdapter.getUserMainInfo(transaction.getReceiver()))
-                .approver(UserAdapter.getUserMainInfo(transaction.getApprover()))
+                .sender(UserAdapter.toUserMainInfo(transaction.getSender()))
+                .receiver(UserAdapter.toUserMainInfo(transaction.getReceiver()))
+                .approver(UserAdapter.toUserMainInfo(transaction.getApprover()))
                 .status(transaction.getStatus())
                 .amount(transaction.getAmount())
                 .description(transaction.getDescription())

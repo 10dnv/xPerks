@@ -1,9 +1,12 @@
 package com.xperks.controller;
 
+import com.xperks.dto.UserMainInfo;
 import com.xperks.dto.UserModel;
 import com.xperks.service.UserServiceIF;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,5 +30,11 @@ public class UserController {
     @PutMapping("/{id}/erd-address")
     public void changeErdAddress(@PathVariable int id, @RequestParam String erdAddress) {
         userService.changeErdAddress(id, erdAddress);
+    }
+
+    @GetMapping("/list")
+    @ResponseBody
+    public List<UserMainInfo> getUserList(String searchValue) {
+        return userService.getUserList(searchValue);
     }
 }

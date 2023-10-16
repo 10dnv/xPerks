@@ -1,6 +1,7 @@
 package com.xperks.service;
 
 import com.xperks.adapter.UserAdapter;
+import com.xperks.dto.UserMainInfo;
 import com.xperks.dto.UserModel;
 import com.xperks.persistence.User;
 import com.xperks.repository.UserRepository;
@@ -9,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -56,6 +59,15 @@ public class UserService extends EntityManagerSupport implements UserServiceIF {
         User user = getUserById(id);
         user.setErdAddress(erdAddress);
         entityManager.persist(user);
+    }
+
+    @Override
+    @Transactional
+    public List<UserMainInfo> getUserList(String searchValue) {
+        if (StringUtils.isBlank(searchValue)) {
+            return userAdapter.toUserMainInfoList(userRepository.findAll());
+        }
+        return userAdapter.toUserMainInfoList(userRepository.getUserByName(searchValue));
     }
 
 

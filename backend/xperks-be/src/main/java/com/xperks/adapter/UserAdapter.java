@@ -5,6 +5,11 @@ import com.xperks.dto.UserModel;
 import com.xperks.persistence.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -20,13 +25,22 @@ public class UserAdapter {
                 .lastName(user.getLastName())
                 .dateOfBirth(user.getDateOfBirth())
                 .employmentDate(user.getEmploymentDate())
-                .superior(getUserMainInfo(user.getSuperior()))
+                .superior(toUserMainInfo(user.getSuperior()))
                 .balance(user.getBalance())
                 .erdAddress(user.getErdAddress())
                 .build();
     }
 
-    static UserMainInfo getUserMainInfo(User user) {
+    static UserMainInfo toUserMainInfo(User user) {
         return new UserMainInfo(user.getId(), user.getFirstName(), user.getLastName());
+    }
+
+    public List<UserMainInfo> toUserMainInfoList(List<User> users) {
+        if (CollectionUtils.isEmpty(users)) {
+            return Collections.emptyList();
+        }
+        List<UserMainInfo> userList = new ArrayList<>();
+        users.forEach(user -> userList.add(toUserMainInfo(user)));
+        return userList;
     }
 }
