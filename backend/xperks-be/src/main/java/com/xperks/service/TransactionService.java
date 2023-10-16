@@ -56,9 +56,12 @@ public class TransactionService extends EntityManagerSupport implements Transact
         return transactionAdapter.toTransactionModelList(transactions);
     }
 
-    private void validateTransactionDetails(TransactionRequest transactionRequest) {
+    private void validateTransactionDetails(int senderId, TransactionRequest transactionRequest) {
         if (transactionRequest == null) {
             throw new IllegalArgumentException("Data about transaction is missing");
+        }
+        if (senderId == transactionRequest.getReceiverId()) {
+            throw new IllegalArgumentException("Sender cannot be the same as receiver");
         }
     }
 }
