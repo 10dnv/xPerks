@@ -12,6 +12,7 @@ function Recognize() {
     const [inputUser, setInputUser] = useState("");
     const [transType, setTransType] = useState("")
     const [amount, setAmount] = useState("")
+    const [description, setDescription] = useState("")
 
     
 
@@ -23,7 +24,7 @@ function Recognize() {
             "receiverId": inputUser,
             "type": transType,
             "amount": amount,
-            "description": ""
+            "description": description
         }
 
         await axios({
@@ -67,6 +68,10 @@ function Recognize() {
         setAmount(e.value);
         console.log(e.value);
       };
+      const handleDescription = (e) => {
+        setDescription(e.target.value);
+        // console.log(e.target.value);
+      };
 
 
   return (
@@ -99,7 +104,9 @@ function Recognize() {
                         </dd>
 
                         <dt>Description:</dt>
-                        <dd className="text-left max-w-sm">I'd like to express my gratitude for all the good work you've done!</dd>
+                        <dd className="text-left max-w-sm">
+                            <textarea className='text-black min-w-[300px] max-h-sm' maxLength={200} onChange={handleDescription}></textarea>
+                        </dd>
                     
                         <dt></dt>
                         <dd>
