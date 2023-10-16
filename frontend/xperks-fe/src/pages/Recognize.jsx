@@ -4,10 +4,12 @@ import useAuth from '../hooks/useAuth';
 import axios from "axios";
 import SearchUser from '../components/SearchUser';
 import Select from "react-select";
+import { useState } from 'react';
 
 function Recognize() {
 
     const {auth} = useAuth()
+    const [inputUser, setInputUser] = useState("");
 
     
 
@@ -16,7 +18,7 @@ function Recognize() {
 
         
         const userData = {
-            "receiverId": 6,
+            "receiverId": inputUser,
             "type": "P2P",
             "amount": "_100",
             "description": ""
@@ -65,7 +67,7 @@ function Recognize() {
             <form onSubmit={handleFormSubmit}>
                 <dl className="grid grid-cols-[repeat(2,auto)] gap-x-5 w-max  gap-y-3 text-sm md:text-xl">
                         <dt>Who do you want to recognize?</dt>
-                        <dd className="text-left"> <SearchUser /> </dd>
+                        <dd className="text-left"> <SearchUser handle={setInputUser}/> </dd>
 
                         <dt>Type of recognition:</dt>
                         <dd className="text-left">

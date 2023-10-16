@@ -2,16 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
 import axios from 'axios';
-import Select, { components } from "react-select";
+import Select from "react-select";
 
-function SearchUser() {
+function SearchUser(props) {
     const {auth} = useAuth()
     const [userList, setUserList] = useState([]);
-    const [inputUser, setInputUser] = useState("");
+    // const [inputUser, setInputUser] = useState("");
 
     const handleUserChange = (e) => {
-        setInputUser(e.id);
-        console.log(e.id)
+        props.handle(e.id);
+        // console.log(e.id)
       };
 
       useEffect(() => {
