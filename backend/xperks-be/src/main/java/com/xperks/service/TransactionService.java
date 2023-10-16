@@ -25,7 +25,7 @@ public class TransactionService extends EntityManagerSupport implements Transact
     @Override
     @Transactional
     public TransactionModel createTransaction(int senderId, TransactionRequest transactionRequest) {
-        validateTransactionDetails(transactionRequest);
+        validateTransactionDetails(senderId, transactionRequest);
         User sender = userService.getUserById(senderId);
         User receiver = userService.getUserById(transactionRequest.getReceiverId());
         User approver = sender.getSuperior();
