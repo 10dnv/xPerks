@@ -24,6 +24,7 @@ public class TransactionService extends EntityManagerSupport implements Transact
     private final TransactionAdapter transactionAdapter;
     private final TransactionRepository transactionRepository;
     private final CompanyWalletRepository companyWalletRepository;
+    private final NotificationServiceIF notificationService;
 
     @Override
     @Transactional
@@ -96,6 +97,7 @@ public class TransactionService extends EntityManagerSupport implements Transact
             transaction.setStatus(Status.DENIED);
         }
         entityManager.persist(transaction);
+        notificationService.createNotification(transaction);
     }
 
     @Override

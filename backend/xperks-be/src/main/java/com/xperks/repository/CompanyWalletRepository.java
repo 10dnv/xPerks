@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CompanyWalletRepository extends JpaRepository<CompanyWallet, Long> {
+public interface CompanyWalletRepository extends JpaRepository<CompanyWallet, Long>, CustomCompanyWalletRepository {
 
 }
