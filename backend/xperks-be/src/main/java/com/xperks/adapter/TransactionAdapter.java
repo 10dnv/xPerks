@@ -13,6 +13,9 @@ import java.util.List;
 public class TransactionAdapter {
 
     public TransactionModel toTransactionModel(Transaction transaction) {
+        if (transaction == null) {
+            return null;
+        }
         return  TransactionModel
                 .builder()
                 .id(transaction.getId())
@@ -22,7 +25,7 @@ public class TransactionAdapter {
                 .status(transaction.getStatus())
                 .amount(transaction.getAmount())
                 .description(transaction.getDescription())
-                .type(transaction.getType())
+                .reason(transaction.getReason())
                 .build();
     }
     

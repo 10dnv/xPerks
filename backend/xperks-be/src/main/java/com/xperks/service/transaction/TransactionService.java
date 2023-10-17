@@ -53,7 +53,7 @@ public class TransactionService extends EntityManagerSupport implements Transact
                 .status(Status.PENDING)
                 .amount(transactionRequest.getAmount())
                 .description(transactionRequest.getDescription())
-                .type(transactionRequest.getType())
+                .reason(transactionRequest.getType())
                 .build();
         entityManager.persist(transaction);
         return transactionAdapter.toTransactionModel(transaction);
@@ -83,9 +83,9 @@ public class TransactionService extends EntityManagerSupport implements Transact
 
     @Override
     @Transactional
-    public void handleTransaction(int id, TransactionResponseType responseType) {
+    public void handleTransaction(int transactionId, TransactionResponseType responseType) {
         int loggedUserId = AuthUtil.getAuthenticatedUserId();
-        Transaction transaction = entityManager.find(Transaction.class, id);
+        Transaction transaction = entityManager.find(Transaction.class, transactionId);
         if (transaction.getApprover().getId() != loggedUserId) {
             throw new IllegalArgumentException("Current user cannot validate transaction with id " + transaction.getId());
         }

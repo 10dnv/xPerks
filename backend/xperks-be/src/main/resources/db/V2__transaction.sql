@@ -6,13 +6,13 @@ CREATE TABLE transaction(
     status                   VARCHAR(50) NOT NULL,
     amount                   VARCHAR(10) NOT NULL,
     description              VARCHAR(500),
-    type                     VARCHAR(50) NOT NULL,
+    reason                   VARCHAR(50) NOT NULL,
     CONSTRAINT PK_Transaction PRIMARY KEY(transaction_id),
     CONSTRAINT FK_User_Sender FOREIGN KEY(sender_id) REFERENCES user_details(user_id),
     CONSTRAINT FK_User_Receiver FOREIGN KEY(receiver_id) REFERENCES user_details(user_id),
     CONSTRAINT FK_User_Approver FOREIGN KEY(approver_id) REFERENCES user_details(user_id),
     CONSTRAINT Ck_Sender_Receiver CHECK (sender_id <> receiver_id AND receiver_id <> approver_id AND sender_id <> approver_id),
-    CONSTRAINT UNQ_Transaction UNIQUE (sender_id, receiver_id, status, type)
+    CONSTRAINT UNQ_Transaction UNIQUE (sender_id, receiver_id, status, reason)
 );
 
 CREATE SEQUENCE transaction_seq

@@ -16,6 +16,9 @@ import java.util.List;
 public class UserAdapter {
 
     public UserModel toUserModel(User user) {
+        if (user == null) {
+            return null;
+        }
         return UserModel
                 .builder()
                 .emailAddress(user.getEmailAddress())

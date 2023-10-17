@@ -2,7 +2,7 @@ package com.xperks.persistence;
 
 import com.xperks.dto.enums.Points;
 import com.xperks.dto.enums.Status;
-import com.xperks.dto.enums.TransactionType;
+import com.xperks.dto.enums.TransactionReason;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -44,5 +44,5 @@ public class Transaction extends BaseEntity {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private TransactionType type;
+    private TransactionReason reason;
 }

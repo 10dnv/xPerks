@@ -1,7 +1,7 @@
 package com.xperks.dto.transaction;
 
 import com.xperks.dto.enums.Points;
-import com.xperks.dto.enums.TransactionType;
+import com.xperks.dto.enums.TransactionReason;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,5 +19,5 @@ public class TransactionRequest {
     private String description;
 
     @NotNull
-    private TransactionType type;
+    private TransactionReason type;
 }
