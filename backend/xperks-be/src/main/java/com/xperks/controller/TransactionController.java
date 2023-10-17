@@ -1,9 +1,9 @@
 package com.xperks.controller;
 
-import com.xperks.dto.TransactionModel;
-import com.xperks.dto.TransactionRequest;
-import com.xperks.dto.TransactionResponseType;
-import com.xperks.service.TransactionServiceIF;
+import com.xperks.dto.transaction.TransactionModel;
+import com.xperks.dto.transaction.TransactionRequest;
+import com.xperks.dto.enums.TransactionResponseType;
+import com.xperks.service.transaction.TransactionServiceIF;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

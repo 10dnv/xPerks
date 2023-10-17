@@ -1,6 +1,6 @@
 package com.xperks.security;
 
-import com.xperks.dto.UserModel;
+import com.xperks.dto.user.UserModel;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 

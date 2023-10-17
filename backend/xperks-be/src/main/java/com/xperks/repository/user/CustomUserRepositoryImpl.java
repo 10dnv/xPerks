@@ -1,10 +1,7 @@
-package com.xperks.repository;
+package com.xperks.repository.user;
 import com.xperks.persistence.User;
 import com.xperks.service.EntityManagerSupport;
-import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CustomUserRepositoryImpl extends EntityManagerSupport implements CustomUserRepository {

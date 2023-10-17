@@ -1,8 +1,8 @@
 package com.xperks.persistence;
 
-import com.xperks.dto.Points;
-import com.xperks.dto.Status;
-import com.xperks.dto.TransactionType;
+import com.xperks.dto.enums.Points;
+import com.xperks.dto.enums.Status;
+import com.xperks.dto.enums.TransactionType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

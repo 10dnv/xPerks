@@ -1,13 +1,19 @@
-package com.xperks.service;
+package com.xperks.service.transaction;
 
 import com.xperks.adapter.TransactionAdapter;
-import com.xperks.dto.*;
+import com.xperks.dto.enums.Status;
+import com.xperks.dto.enums.TransactionResponseType;
+import com.xperks.dto.transaction.TransactionModel;
+import com.xperks.dto.transaction.TransactionRequest;
 import com.xperks.persistence.CompanyWallet;
 import com.xperks.persistence.Transaction;
 import com.xperks.persistence.User;
-import com.xperks.repository.CompanyWalletRepository;
-import com.xperks.repository.TransactionRepository;
+import com.xperks.repository.companyWallet.CompanyWalletRepository;
+import com.xperks.repository.transaction.TransactionRepository;
 import com.xperks.security.AuthUtil;
+import com.xperks.service.EntityManagerSupport;
+import com.xperks.service.notification.NotificationServiceIF;
+import com.xperks.service.user.UserServiceIF;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -3,7 +3,7 @@ package com.xperks.security.auth;
 import com.xperks.dto.auth.LoginRequest;
 import com.xperks.dto.auth.LoginResponse;
 import com.xperks.security.config.JwtService;
-import com.xperks.service.UserService;
+import com.xperks.service.user.UserService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

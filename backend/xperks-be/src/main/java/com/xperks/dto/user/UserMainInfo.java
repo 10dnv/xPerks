@@ -1,4 +1,4 @@
-package com.xperks.dto;
+package com.xperks.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

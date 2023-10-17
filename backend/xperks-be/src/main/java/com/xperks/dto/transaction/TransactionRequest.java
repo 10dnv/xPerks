@@ -1,7 +1,8 @@
-package com.xperks.dto;
+package com.xperks.dto.transaction;
 
+import com.xperks.dto.enums.Points;
+import com.xperks.dto.enums.TransactionType;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package com.xperks.dto;
+package com.xperks.dto.enums;
 
 public enum TransactionResponseType {
 

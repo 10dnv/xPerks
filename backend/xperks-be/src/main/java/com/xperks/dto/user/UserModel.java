@@ -1,4 +1,4 @@
-package com.xperks.dto;
+package com.xperks.dto.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

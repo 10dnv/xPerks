@@ -1,4 +1,4 @@
-package com.xperks.service;
+package com.xperks.service.notification;
 
 import com.xperks.persistence.Transaction;
 

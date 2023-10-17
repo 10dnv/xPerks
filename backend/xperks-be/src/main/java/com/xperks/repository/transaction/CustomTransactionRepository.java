@@ -1,4 +1,4 @@
-package com.xperks.repository;
+package com.xperks.repository.transaction;
 
 import com.xperks.persistence.Transaction;
 import com.xperks.persistence.User;

@@ -1,11 +1,12 @@
-package com.xperks.service;
+package com.xperks.service.user;
 
 import com.xperks.adapter.UserAdapter;
-import com.xperks.dto.UserMainInfo;
-import com.xperks.dto.UserModel;
+import com.xperks.dto.user.UserMainInfo;
+import com.xperks.dto.user.UserModel;
 import com.xperks.persistence.User;
-import com.xperks.repository.UserRepository;
+import com.xperks.repository.user.UserRepository;
 import com.xperks.security.AuthUtil;
+import com.xperks.service.EntityManagerSupport;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;

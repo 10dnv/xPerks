@@ -1,7 +1,7 @@
-package com.xperks.service;
+package com.xperks.service.user;
 
-import com.xperks.dto.UserMainInfo;
-import com.xperks.dto.UserModel;
+import com.xperks.dto.user.UserMainInfo;
+import com.xperks.dto.user.UserModel;
 import com.xperks.persistence.User;
 
 import java.util.List;

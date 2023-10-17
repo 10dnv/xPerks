@@ -1,8 +1,8 @@
 package com.xperks.controller;
 
-import com.xperks.dto.UserMainInfo;
-import com.xperks.dto.UserModel;
-import com.xperks.service.UserServiceIF;
+import com.xperks.dto.user.UserMainInfo;
+import com.xperks.dto.user.UserModel;
+import com.xperks.service.user.UserServiceIF;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

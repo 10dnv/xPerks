@@ -1,7 +1,7 @@
 package com.xperks.adapter;
 
-import com.xperks.dto.UserMainInfo;
-import com.xperks.dto.UserModel;
+import com.xperks.dto.user.UserMainInfo;
+import com.xperks.dto.user.UserModel;
 import com.xperks.persistence.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

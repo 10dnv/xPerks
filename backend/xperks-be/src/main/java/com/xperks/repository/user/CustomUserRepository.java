@@ -1,4 +1,4 @@
-package com.xperks.repository;
+package com.xperks.repository.user;
 
 import com.xperks.persistence.User;
 

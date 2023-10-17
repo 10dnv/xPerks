@@ -1,7 +1,8 @@
-package com.xperks.service;
+package com.xperks.service.notification;
 
 import com.xperks.persistence.Notification;
 import com.xperks.persistence.Transaction;
+import com.xperks.service.EntityManagerSupport;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
