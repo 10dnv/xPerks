@@ -23,4 +23,13 @@ public class CustomTransactionRepositoryImpl extends EntityManagerSupport implem
                 .setParameter("user", user)
                 .getResultList();
     }
+
+    @Override
+    public int countInPendingTransactions(int id) {
+        return ((Number) entityManager
+                .createQuery("SELECT COUNT(*) FROM Transaction WHERE approver.id = :id AND status = 'PENDING'", Integer.class)
+                .setParameter("id", id)
+                .getSingleResult())
+                .intValue();
+    }
 }

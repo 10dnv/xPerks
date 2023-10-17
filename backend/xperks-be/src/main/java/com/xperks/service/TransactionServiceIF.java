@@ -12,4 +12,6 @@ public interface TransactionServiceIF {
     List<TransactionModel> getRequestsForApproval();
 
     void handleTransaction(int id, TransactionResponseType responseType);
+
+    int getNumberOfInPendingTransactions();
 }

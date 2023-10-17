@@ -98,6 +98,16 @@ public class TransactionService extends EntityManagerSupport implements Transact
         entityManager.persist(transaction);
     }
 
+    @Override
+    @Transactional
+    public int getNumberOfInPendingTransactions() {
+        if (!userService.isSuperior()) {
+            return  0;
+        }
+        int currentUserId = AuthUtil.getAuthenticatedUserId();
+        return transactionRepository.countInPendingTransactions(currentUserId);
+    }
+
     private void validateTransactionDetails(int senderId, TransactionRequest transactionRequest) {
         if (transactionRequest == null) {
             throw new IllegalArgumentException("Data about transaction is missing");

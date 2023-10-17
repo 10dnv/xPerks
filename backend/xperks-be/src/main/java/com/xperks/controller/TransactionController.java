@@ -39,4 +39,10 @@ public class TransactionController {
     public void handleTransaction(@PathVariable int id, @RequestParam TransactionResponseType responseType) {
         transactionService.handleTransaction(id, responseType);
     }
+
+    @GetMapping("/pending")
+    @ResponseBody
+    public int getNumberOfInPendingTransactions() {
+        return transactionService.getNumberOfInPendingTransactions();
+    }
 }
