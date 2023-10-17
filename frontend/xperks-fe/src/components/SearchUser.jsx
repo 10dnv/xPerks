@@ -44,15 +44,12 @@ function SearchUser(props) {
             
 
     return (
-        <>
-        
-        
             <Select
                 options={userList}
-                className='w-2/4 text-black'
+                className='w-[300px] text-black'
                 onChange={handleUserChange}
+                getOptionValue={(option) => option.id}
             />
-        </>
     )
 }
 

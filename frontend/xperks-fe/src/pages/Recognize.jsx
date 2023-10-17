@@ -10,6 +10,9 @@ function Recognize() {
 
     const {auth} = useAuth()
     const [inputUser, setInputUser] = useState("");
+    const [transType, setTransType] = useState("")
+    const [amount, setAmount] = useState("")
+    const [description, setDescription] = useState("")
 
     
 
@@ -19,9 +22,9 @@ function Recognize() {
         
         const userData = {
             "receiverId": inputUser,
-            "type": "P2P",
-            "amount": "_100",
-            "description": ""
+            "type": transType,
+            "amount": amount,
+            "description": description
         }
 
         await axios({
@@ -56,6 +59,19 @@ function Recognize() {
         { value: '_500', label: '500' }
       ]
 
+      const handleTransTypeChange = (e) => {
+        setTransType(e.value);
+        console.log(e.value);
+      };
+
+      const handleAmountChange = (e) => {
+        setAmount(e.value);
+        console.log(e.value);
+      };
+      const handleDescription = (e) => {
+        setDescription(e.target.value);
+        // console.log(e.target.value);
+      };
 
 
   return (
@@ -65,7 +81,7 @@ function Recognize() {
             <h1 className='text-[50px]  p-20 text-[#8D8D8D]'>Recognize</h1>
 
             <form onSubmit={handleFormSubmit}>
-                <dl className="grid grid-cols-[repeat(2,auto)] gap-x-5 w-max  gap-y-3 text-sm md:text-xl">
+                <dl className="grid grid-cols-[repeat(2,auto)] gap-x-5 w-max  gap-y-3 text-sm md:text-xl flex-wrap">
                         <dt>Who do you want to recognize?</dt>
                         <dd className="text-left"> <SearchUser handle={setInputUser}/> </dd>
 
@@ -73,8 +89,8 @@ function Recognize() {
                         <dd className="text-left">
                             <Select
                             options={options_transaction_type}
-                            className='w-2/4 text-black'
-                            // onChange={handleUserChange}
+                            className='w-[300px] text-black'
+                            onChange={handleTransTypeChange}
                             />
                         </dd>
 
@@ -83,12 +99,14 @@ function Recognize() {
                             <Select
                                 options={options_point_amount}
                                 className='w-2/4 text-black'
-                                // onChange={handleUserChange}
+                                onChange={handleAmountChange}
                                 />
                         </dd>
 
                         <dt>Description:</dt>
-                        <dd className="text-left max-w-sm">I'd like to express my gratitude for all the good work you've done!</dd>
+                        <dd className="text-left max-w-sm">
+                            <textarea className='text-black min-w-[300px] max-h-sm' maxLength={200} onChange={handleDescription}></textarea>
+                        </dd>
                     
                         <dt></dt>
                         <dd>
