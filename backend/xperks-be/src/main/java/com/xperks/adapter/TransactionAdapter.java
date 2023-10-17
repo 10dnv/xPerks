@@ -26,6 +26,7 @@ public class TransactionAdapter {
                 .amount(transaction.getAmount())
                 .description(transaction.getDescription())
                 .reason(transaction.getReason())
+                .transactionDate(transaction.getTransactionDate())
                 .build();
     }
     

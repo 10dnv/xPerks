@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @Builder
@@ -21,4 +23,5 @@ public class TransactionModel {
     private Points amount;
     private String description;
     private TransactionReason reason;
+    private Date transactionDate;
 }

@@ -19,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -54,6 +55,7 @@ public class TransactionService extends EntityManagerSupport implements Transact
                 .amount(transactionRequest.getAmount())
                 .description(transactionRequest.getDescription())
                 .reason(transactionRequest.getType())
+                .transactionDate(new Date())
                 .build();
         entityManager.persist(transaction);
         return transactionAdapter.toTransactionModel(transaction);

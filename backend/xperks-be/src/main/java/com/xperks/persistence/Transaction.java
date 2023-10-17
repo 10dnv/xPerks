@@ -9,6 +9,8 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "transaction")
 @AttributeOverride(name = "id", column = @Column(name = "transaction_id"))
@@ -45,4 +47,9 @@ public class Transaction extends BaseEntity {
     @NotNull
     @Enumerated(EnumType.STRING)
     private TransactionReason reason;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "transaction_date", nullable = false)
+    @NotNull
+    private Date transactionDate;
 }
