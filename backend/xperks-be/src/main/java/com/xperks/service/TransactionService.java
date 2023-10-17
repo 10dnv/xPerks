@@ -2,8 +2,10 @@ package com.xperks.service;
 
 import com.xperks.adapter.TransactionAdapter;
 import com.xperks.dto.*;
+import com.xperks.persistence.CompanyWallet;
 import com.xperks.persistence.Transaction;
 import com.xperks.persistence.User;
+import com.xperks.repository.CompanyWalletRepository;
 import com.xperks.repository.TransactionRepository;
 import com.xperks.security.AuthUtil;
 import jakarta.transaction.Transactional;
@@ -21,6 +23,7 @@ public class TransactionService extends EntityManagerSupport implements Transact
     private final UserServiceIF userService;
     private final TransactionAdapter transactionAdapter;
     private final TransactionRepository transactionRepository;
+    private final CompanyWalletRepository companyWalletRepository;
 
     @Override
     @Transactional
@@ -82,8 +85,13 @@ public class TransactionService extends EntityManagerSupport implements Transact
         if (TransactionResponseType.APPROVE.equals(responseType)) {
             transaction.setStatus(Status.APPROVED);
             User user = transaction.getReceiver();
-            user.setBalance(user.getBalance() + transaction.getAmount().getPoints());
+            int points = transaction.getAmount().getPoints();
+            CompanyWallet wallet = getCompanyWallet();
+            wallet.setAmount(wallet.getAmount() - points);
+            validateWalletAmount();
+            user.setBalance(user.getBalance() + points);
             entityManager.persist(user);
+            entityManager.persist(wallet);
         } else {
             transaction.setStatus(Status.DENIED);
         }
@@ -96,6 +104,19 @@ public class TransactionService extends EntityManagerSupport implements Transact
         }
         if (senderId == transactionRequest.getReceiverId()) {
             throw new IllegalArgumentException("Sender cannot be the same as receiver");
+        }
+    }
+
+    private CompanyWallet getCompanyWallet() {
+        CompanyWallet wallet = (CompanyWallet) companyWalletRepository.findAll().stream().findFirst().orElse(null);
+        Objects.requireNonNull(wallet, "Company wallet is missing");
+        return wallet;
+    }
+
+    private void validateWalletAmount() {
+        CompanyWallet wallet = getCompanyWallet();
+        if (wallet.getAmount() < 0) {
+            throw new IllegalArgumentException("Insufficient funds. Transaction cannot be approved");
         }
     }
 }
