@@ -36,7 +36,7 @@ function Recognize() {
             data : userData
         }).then(res => {
             console.log(res.data)
-            NotificationManager.success("Successfully updated mvsx address!", "Success!")
+            NotificationManager.success("Recognition was submitted!", "Success!")
                 })
             .catch((error) => {
                 NotificationManager.error("Error sending the transaction!", "Error")
