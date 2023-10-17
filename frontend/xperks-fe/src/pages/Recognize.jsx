@@ -81,7 +81,7 @@ function Recognize() {
             <h1 className='text-[50px]  p-20 text-[#8D8D8D]'>Recognize</h1>
 
             <form onSubmit={handleFormSubmit}>
-                <dl className="grid grid-cols-[repeat(2,auto)] gap-x-5 w-max  gap-y-3 text-sm md:text-xl">
+                <dl className="grid grid-cols-[repeat(2,auto)] gap-x-5 w-max  gap-y-3 text-sm md:text-xl flex-wrap">
                         <dt>Who do you want to recognize?</dt>
                         <dd className="text-left"> <SearchUser handle={setInputUser}/> </dd>
 
@@ -89,7 +89,7 @@ function Recognize() {
                         <dd className="text-left">
                             <Select
                             options={options_transaction_type}
-                            className='w-2/4 text-black'
+                            className='w-[300px] text-black'
                             onChange={handleTransTypeChange}
                             />
                         </dd>
