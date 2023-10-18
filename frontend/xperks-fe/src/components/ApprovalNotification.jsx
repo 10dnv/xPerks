@@ -27,7 +27,7 @@ function ApprovalNotification() {
     getApprovalNumber()
 
   return (
-    <Avatar value={notifications}  className={notifications?'mx-1 font-bold' : 'hidden'} size='25' round={true} color='#24f7dd' fgColor='black' textSizeRatio={1.8}/>
+    <Avatar value={String(notifications)}  className={notifications?'mx-1 font-bold' : 'hidden'} size='25' round={true} color='#24f7dd' fgColor='black' textSizeRatio={1.8}/>
   )
 }
 
