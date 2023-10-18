@@ -11,7 +11,7 @@ function ApprovalNotification() {
     const getApprovalNumber = async () =>{
         await axios({
             method: 'GET',
-            url: '/api/transaction/pending',
+            url: `${process.env.REACT_APP_API_URL}/api/transaction/pending`,
             headers: {
               Authorization: `Bearer ${auth.token}}`
             },

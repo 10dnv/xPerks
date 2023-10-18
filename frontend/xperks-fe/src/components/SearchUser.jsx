@@ -23,7 +23,7 @@ function SearchUser(props) {
         
         await axios({
             method: 'GET',
-            url: '/api/user/list',
+            url: `${process.env.REACT_APP_API_URL}/api/user/list`,
             headers: {
               Authorization: `Bearer ${auth.token}}`
             },

@@ -6,11 +6,7 @@ import useAuth from '../hooks/useAuth';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
-// const instance = axios.create({
-//     baseURL: 'http://192.168.0.174:8000'
-// });
-
-const LOGIN_URL = "api/auth/login"
+const LOGIN_URL = `${process.env.REACT_APP_API_URL}/api/auth/login`
 
 const Login = () => {
     const { setAuth} = useAuth();

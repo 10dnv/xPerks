@@ -12,7 +12,7 @@ const Profile = () => {
     const [inputAddressVal, setInputAddressVal] = useState("")
 
     useEffect(() => {
-        axios.get(`/api/user/${auth.id}` , { headers: {"Authorization" : `Bearer ${auth.token}`} })
+        axios.get(`${process.env.REACT_APP_API_URL}/api/user/${auth.id}` , { headers: {"Authorization" : `Bearer ${auth.token}`} })
         .then(res => {
             console.log(res.data)
         setUserData(res.data)
@@ -28,7 +28,7 @@ const Profile = () => {
 
          await axios({
             method: 'PUT',
-            url: '/api/user/erd-address',
+            url: `${process.env.REACT_APP_API_URL}/api/user/erd-address`,
             headers: {
               Authorization: `Bearer ${auth.token}}`
             },
