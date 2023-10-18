@@ -25,7 +25,7 @@ const Navbar = () => {
 
     // Check if logged user is superior to render extra page
     useEffect(() => {
-        axios.get('api/user/superior' , { headers: {"Authorization" : `Bearer ${auth.token}`} })
+        axios.get(`${process.env.REACT_APP_API_URL}/api/user/superior` , { headers: {"Authorization" : `Bearer ${auth.token}`} })
         .then(res => {
             setIsSuperior(res.data)
         })

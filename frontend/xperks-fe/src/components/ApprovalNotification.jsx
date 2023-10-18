@@ -11,7 +11,7 @@ function ApprovalNotification() {
     const getApprovalNumber = async () =>{
         await axios({
             method: 'GET',
-            url: '/api/transaction/pending',
+            url: `${process.env.REACT_APP_API_URL}/api/transaction/pending`,
             headers: {
               Authorization: `Bearer ${auth.token}}`
             },
@@ -27,7 +27,7 @@ function ApprovalNotification() {
     getApprovalNumber()
 
   return (
-    <Avatar value={notifications}  className={notifications?'mx-1 font-bold' : 'hidden'} size='25' round={true} color='#24f7dd' fgColor='black' textSizeRatio={1.8}/>
+    <Avatar value={String(notifications)}  className={notifications?'mx-1 font-bold' : 'hidden'} size='25' round={true} color='#24f7dd' fgColor='black' textSizeRatio={1.8}/>
   )
 }
 

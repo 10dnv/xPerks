@@ -29,7 +29,7 @@ function Recognize() {
 
         await axios({
             method: 'POST',
-            url: "/api/transaction",
+            url: `${process.env.REACT_APP_API_URL}/api/transaction`,
             headers: {
                 Authorization: `Bearer ${auth.token}}`
             },
