@@ -100,7 +100,8 @@ Below chain of snips is intended to showcase the basic steps while using xPerks:
 
 
 
-Made with &#9829; by xPerks Team.
+
+http://www.xperks.io is made with &#9829; by xPerks Team. 
 
 Naomi Vasu   - Software Engineer handling back-end architecture
 
