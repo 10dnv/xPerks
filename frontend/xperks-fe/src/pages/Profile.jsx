@@ -12,7 +12,8 @@ const Profile = () => {
     const [inputAddressVal, setInputAddressVal] = useState("")
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/user/${auth.id}` , { headers: {"Authorization" : `Bearer ${auth.token}`} })
+        // axios.get(`${process.env.REACT_APP_API_URL}/api/user/${auth.id}` , { headers: {"Authorization" : `Bearer ${auth.token}`} })
+        axios.get(`${process.env.REACT_APP_API_URL}/api/user` , { headers: {"Authorization" : `Bearer ${auth.token}`} })
         .then(res => {
             console.log(res.data)
         setUserData(res.data)
@@ -49,13 +50,13 @@ const Profile = () => {
   return (
     <div className='text-white h-auto mx-10 w-2/3  rounded-md  shadow-elrond-900 shadow-2xl'>
         <NotificationContainer/>
-        <h1 className='text-[50px]  text-center text-[#8D8D8D]'>My Profile</h1>
+        <h1 className='text-[50px]  text-center text-white font-bold'>My Profile</h1>
   <div class="relative wrap overflow-hidden p-10 h-full">
     <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-[80%] border" style={{left: "50%"}}></div>
         {/* <!-- right timeline --> */}
     <div class="mb-8 flex justify-between items-center w-full right-timeline">
       <div class="order-1 w-5/12"></div>
-      <div class="z-20 flex items-center order-1 bg-elrond shadow-xl w-8 h-8 rounded-full">
+      <div class="z-20 flex items-center order-1 bg-[#8D8D8D] shadow-xl w-8 h-8 rounded-full">
         <h1 class="mx-auto font-semibold text-lg text-gray-900">1</h1>
       </div>
       <div class="order-1 bg-elrond rounded-lg shadow-xl w-5/12 px-6 py-4">
@@ -67,7 +68,7 @@ const Profile = () => {
     {/* <!-- left timeline --> */}
     <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
       <div class="border-1 w-5/12"></div>
-      <div class="z-20 flex items-center order-1 bg-elrond shadow-xl w-8 h-8 rounded-full">
+      <div class="z-20 flex items-center order-1 bg-[#8D8D8D] shadow-xl w-8 h-8 rounded-full">
         <h1 class="mx-auto text-gray-800 font-semibold text-lg">2</h1>
       </div>
       <div class="order-1 bg-elrond rounded-lg shadow-xl w-5/12 px-6 py-4">
@@ -79,7 +80,7 @@ const Profile = () => {
     {/* <!-- right timeline --> */}
     <div class="mb-8 flex justify-between items-center w-full right-timeline">
       <div class="order-1 w-5/12"></div>
-      <div class="z-20 flex items-center order-1 bg-elrond shadow-xl w-8 h-8 rounded-full">
+      <div class="z-20 flex items-center order-1 bg-[#8D8D8D] shadow-xl w-8 h-8 rounded-full">
         <h1 class="mx-auto font-semibold text-lg text-gray-800">3</h1>
       </div>
       <div class="order-1 bg-elrond rounded-lg shadow-xl w-5/12 px-6 py-4">
@@ -91,7 +92,7 @@ const Profile = () => {
     {/* <!-- left timeline --> */}
     <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
       <div class="order-1 w-5/12"></div>
-      <div class="z-20 flex items-center order-1 bg-elrond shadow-xl w-8 h-8 rounded-full">
+      <div class="z-20 flex items-center order-1 bg-[#8D8D8D] shadow-xl w-8 h-8 rounded-full">
         <h1 class="mx-auto text-gray-800 font-semibold text-lg">4</h1>
       </div>
       <div class="order-1 bg-elrond rounded-lg shadow-xl w-5/12 px-6 py-4">
@@ -103,7 +104,7 @@ const Profile = () => {
      {/* <!-- right timeline --> */}
      <div class="mb-8 flex justify-between items-center w-full right-timeline">
       <div class="order-1 w-5/12"></div>
-      <div class="z-20 flex items-center order-1 bg-elrond shadow-xl w-8 h-8 rounded-full">
+      <div class="z-20 flex items-center order-1 bg-[#8D8D8D] shadow-xl w-8 h-8 rounded-full">
         <h1 class="mx-auto font-semibold text-lg text-gray-800">5</h1>
       </div>
       <div class="order-1 bg-elrond rounded-lg shadow-xl w-5/12 px-6 py-4">
@@ -114,7 +115,7 @@ const Profile = () => {
 {/* <!-- left timeline --> */}
 <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
       <div class="order-1 w-5/12"></div>
-      <div class="z-20 flex items-center order-1 bg-elrond shadow-xl w-8 h-8 rounded-full">
+      <div class="z-20 flex items-center order-1 bg-[#8D8D8D] shadow-xl w-8 h-8 rounded-full">
         <h1 class="mx-auto text-gray-800 font-semibold text-lg">6</h1>
       </div>
       <div class="order-1 bg-elrond rounded-lg shadow-xl w-5/12 px-6 py-4">

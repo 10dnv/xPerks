@@ -78,10 +78,10 @@ function Recognize() {
     <div className='text-white h-[80vh] mx-10 w-2/3  rounded-md  shadow-elrond-900 shadow-2xl'>
         <NotificationContainer/>
         <div className='flex flex-col items-center justify-center h-96 '>
-            <h1 className='text-[50px]  p-20 text-[#8D8D8D]'>Recognize</h1>
+            <h1 className='text-[50px] text-white font-bold'>Recognize</h1>
 
             <form onSubmit={handleFormSubmit}>
-                <dl className="grid grid-cols-[repeat(2,auto)] gap-x-5 w-max  gap-y-3 text-sm md:text-xl flex-wrap">
+                <dl className="grid grid-cols-[repeat(2,auto)] gap-x-5 pt-10 w-max  gap-y-3 text-sm md:text-xl flex-wrap">
                         <dt>Who do you want to recognize?</dt>
                         <dd className="text-left"> <SearchUser handle={setInputUser}/> </dd>
 
