@@ -9,32 +9,14 @@ function History() {
     const [sentTrans, setSentTrans] = useState([])
     const [recvTrans, setRecvTrans] = useState([])
 
-    function generateRandomInteger(min, max) {
-        return Math.floor(min + Math.random()*(max - min + 1))
-      }
-
       const fetchData = async () =>{
         await axios.get(`${process.env.REACT_APP_API_URL}/api/transaction/history` , { headers: {"Authorization" : `Bearer ${auth.token}`} })
         .then(res => {
             res.data?.map((data,idx) =>(
                data.transactionType === "SENT"?
-                    // setSentTrans({receiver:data.receiver?.firstName + " " + data.receiver?.lastName,
-                    //                 amount:data.amount,
-                    //                 reason:data.reason,
-                    //                 approver:data.approver?.firstName + " " +data.approver?.lastName,
-                    //                 date:data.transactionDate,
-                    //                 status:data.status,
-                    //                 description:data.description},
-                    //                 ):
-
-                    // recvTrans.push({sender:data.sender?.firstName + " " + data.sender?.lastName})
                     setSentTrans(sentTrans => [...sentTrans, data]):
                     setRecvTrans(recvTrans => [...recvTrans, data])
-                    // recvTrans.push({sender:data.sender?.firstName + " " + data.sender?.lastName})
             ))
-            // console.log(res.data)
-            console.log(sentTrans)
-            // console.log(recvTrans)
         })
         .catch((error) => {
         console.log(error)
