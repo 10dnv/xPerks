@@ -2,6 +2,7 @@ package com.xperks.controller;
 
 import com.xperks.dto.user.UserMainInfo;
 import com.xperks.dto.user.UserModel;
+import com.xperks.security.AuthUtil;
 import com.xperks.service.user.UserServiceIF;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +16,10 @@ public class UserController {
 
     private final UserServiceIF userService;
 
-    @GetMapping("/{id}")
+    @GetMapping
     @ResponseBody
-    public UserModel getUser(@PathVariable int id) {
-        return userService.getUser(id);
+    public UserModel getUser() {
+        return userService.getUser(AuthUtil.getAuthenticatedUserId());
     }
 
     @GetMapping("/superior")

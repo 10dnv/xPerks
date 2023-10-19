@@ -14,8 +14,8 @@ public class UserModel extends CustomUserDetails {
     private int id;
     private String firstName;
     private String lastName;
-    private Date dateOfBirth;
-    private Date employmentDate;
+    private String dateOfBirth;
+    private String employmentDate;
     @JsonIgnoreProperties("superior")
     private UserMainInfo superior;
     private int balance;

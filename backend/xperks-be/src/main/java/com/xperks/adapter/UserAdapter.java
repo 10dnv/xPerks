@@ -7,8 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -26,8 +28,8 @@ public class UserAdapter {
                 .id(user.getId())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
-                .dateOfBirth(user.getDateOfBirth())
-                .employmentDate(user.getEmploymentDate())
+                .dateOfBirth(parseDate(user.getDateOfBirth()))
+                .employmentDate(parseDate(user.getEmploymentDate()))
                 .superior(toUserMainInfo(user.getSuperior()))
                 .balance(user.getBalance())
                 .erdAddress(user.getErdAddress())
@@ -45,5 +47,13 @@ public class UserAdapter {
         List<UserMainInfo> userList = new ArrayList<>();
         users.forEach(user -> userList.add(toUserMainInfo(user)));
         return userList;
+    }
+
+    public static String parseDate(Date date) {
+        if (date == null) {
+            return  null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(date);
     }
 }
