@@ -85,7 +85,6 @@ const Navbar = () => {
                 </li>
                 <li className='p-4 mt-5 uppercase border-b border-b-gray-900'><Link to="/profile">Profile</Link></li>
                 <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/history">Point History</Link></li>
-                <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/balance">Point Balance</Link></li>
                 <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/recognize">Peer recognize</Link></li>
                 <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/redeem">Redeem points</Link></li>
                 <li className='p-4 uppercase border-b border-b-gray-900'><Link to="/events">Upcoming events</Link></li>
