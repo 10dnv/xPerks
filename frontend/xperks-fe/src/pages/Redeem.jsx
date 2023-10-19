@@ -57,9 +57,9 @@ function Redeem() {
         <div className='flex flex-col items-center justify-center h-auto flex-wrap '>
             <h1 className='text-[50px] pb-20 text-[#8D8D8D]'>Redeem</h1>
             <form onSubmit={handleFormSubmit}>
-                <h2 className='text-3xl pb-5'>You currently own <span className='text-elrond'>{balance}</span> points.</h2>
-                <h2 className='text-3xl pb-5'>Your MultiversX wallet: <span className='text-elrond text-xl'>{erdAddress}</span></h2>
-                <div className='flex items-center text-3xl justify-between'>
+                <h2 className='text-3xl py-5'>You currently own <span className='text-elrond'>{balance}</span> points.</h2>
+                <h2 className='text-3xl py-5'>Your MultiversX wallet: <span className='text-elrond text-xl'>{erdAddress}</span></h2>
+                <div className={balance?'flex items-center text-3xl justify-between py-5':'hidden'}>
                     <h2 className='text-3xl'>Amount to be withdrawn:</h2>
                     <p> Points:{pointsToBeRedeemed}</p>
                     <input type="range" id="points" name="volume" step="1" min="0" max={balance} onChange={handleSliderVal} className='w-auto mx-0 px-0 h-auto' value={pointsToBeRedeemed}/>
@@ -67,7 +67,7 @@ function Redeem() {
                 </div>
 
                 <div className='flex justify-center'>
-                    <button className='text-black bg-white rounded-lg px-5 py-1 my-16 font-bold transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-elrond duration-200 '>Redeem</button>
+                    <button className={balance?'text-black bg-white rounded-lg px-5 py-1 my-16 font-bold transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-elrond duration-200 ':'hidden'}>Redeem</button>
                 </div>
             </form>
         </div>
