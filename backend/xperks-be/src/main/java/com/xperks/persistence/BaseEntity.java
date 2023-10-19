@@ -24,7 +24,7 @@ public class BaseEntity {
             strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
                     @Parameter(name = "sequence_name", value = "transaction_seq"),
-                    @Parameter(name = "initial_value", value = "10"),
+                    @Parameter(name = "initial_value", value = "15"),
                     @Parameter(name = "increment_size", value = "1")
             }
     )
