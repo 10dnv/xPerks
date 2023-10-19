@@ -4,6 +4,7 @@ import com.xperks.dto.enums.TransactionType;
 import com.xperks.dto.transaction.TransactionModel;
 import com.xperks.persistence.Transaction;
 import com.xperks.security.AuthUtil;
+import com.xperks.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +29,7 @@ public class TransactionAdapter {
                 .amount(transaction.getAmount())
                 .description(transaction.getDescription())
                 .reason(transaction.getReason())
-                .transactionDate(transaction.getTransactionDate())
+                .transactionDate(DateUtil.parseDate(transaction.getTransactionDate()))
                 .transactionType(AuthUtil.getAuthenticatedUserId() == transaction.getSender().getId() ? TransactionType.SENT : TransactionType.RECEIVED)
                 .build();
     }

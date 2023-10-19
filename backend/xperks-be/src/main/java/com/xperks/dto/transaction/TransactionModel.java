@@ -24,6 +24,6 @@ public class TransactionModel {
     private Points amount;
     private String description;
     private TransactionReason reason;
-    private Date transactionDate;
+    private String transactionDate;
     private TransactionType transactionType;
 }
