@@ -32,7 +32,7 @@ function History() {
     <div className='text-white h-auto mx-10 w-2/3  rounded-md  shadow-elrond-900 shadow-2xl'>
         <NotificationContainer/>
         <div className='flex flex-col items-center  '>
-            <h1 className='text-[50px]   text-[#8D8D8D]'>Point History</h1>
+            <h1 className='text-[50px]   text-white font-bold'>Point History</h1>
         </div>
 
         <div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
