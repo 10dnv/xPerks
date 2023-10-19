@@ -71,11 +71,36 @@ Sept 2024: mobile app available
 
 ## Repo Structure
 ## Cold Demo
+
+Below chain of snips is intended to showcase the basic steps while using xPerks:
+
+
+- Log in screen:
+<img src="artifacts/1.png" alt="Log in" width="600"/>
+
+- Welcome dashboard:
+<img src="artifacts/1.png" alt="Log in" width="600"/>
+
+- Personal profile:
+<img src="artifacts/3.png" alt="Log in" width="600"/>
+
+- Points History (Manager View):
+<img src="artifacts/4.png" alt="Log in" width="600"/>
+
+- Recognition as Action (Manager View):
+<img src="artifacts/5.png" alt="Log in" width="600"/>
+
+- Acceptance of Recognition (Expert View):
+<img src="artifacts/6.png" alt="Log in" width="600"/>
+
+- Perks Approvals View:
+<img src="artifacts/7.png" alt="Log in" width="600"/>
 ## App walkthorugh & snips
+
 ## Authors
 
 Naomi Vasu   - Software Engineer handling back-end architecture
 
 Daniel Vasu  - Firmware Engineer providing front-end solution
 
-Iulian Neagu - Project Manager creating the concept
+Iulian Neagu - Project Manager creating the concept   
