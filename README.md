@@ -5,6 +5,8 @@ xPerks takes the battle for brains at a whole new level.
 
 Recognition is made easy with xPerks. Developers & experts are motivated to keep on building, knowing that their efforts can be clearly seen & acknowledged.
 
+The team, the vision & xPerks in-app experience can be found below:
+[![xPerks The Beginning](https://img.youtube.com/vi/0s9ZYRWDPzE/0.jpg)](https://www.youtube.com/watch?v=0s9ZYRWDPzE)
 
 
 
@@ -57,6 +59,8 @@ Answer is one click away - xPerks creates means of sharing recognition through e
 Short answer: SSO for experts, blockchian config for companies, transparency for both.
 
 ## Roadmap
+
+
 Oct  2023: v0.1 top-down recognition features demo + blockchain connection on test-net
 
 Dec  2023: v0.2 P2P recognition features added; top-down recognition included in smartcontract on test-net
