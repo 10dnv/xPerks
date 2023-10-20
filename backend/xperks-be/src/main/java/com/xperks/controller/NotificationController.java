@@ -3,10 +3,7 @@ package com.xperks.controller;
 import com.xperks.dto.notification.NotificationModel;
 import com.xperks.service.notification.NotificationServiceIF;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +18,10 @@ public class NotificationController {
     @ResponseBody
     public List<NotificationModel> getNotifications() {
         return notificationService.getNotifications();
+    }
+
+    @PutMapping("/read/{id}")
+    public void readNotification(@PathVariable int notificationId) {
+        notificationService.readNotification(notificationId);
     }
 }

@@ -39,4 +39,13 @@ public class NotificationService extends EntityManagerSupport implements Notific
         return notificationAdapter.toNotificationModelList(notificationRepository.getNotificationsForUser(AuthUtil.getAuthenticatedUserId()));
     }
 
+    @Override
+    @Transactional
+    public void readNotification(int notificationId) {
+        Notification notification = notificationRepository.findById(notificationId);
+        Objects.requireNonNull(notification);
+        notification.setUnread(false);
+        entityManager.persist(notification);
+    }
+
 }

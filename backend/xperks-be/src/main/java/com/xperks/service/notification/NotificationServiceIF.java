@@ -9,4 +9,6 @@ public interface NotificationServiceIF {
     void createNotification(Transaction transaction);
 
     List<NotificationModel> getNotifications();
+
+    void readNotification(int notificationId);
 }
