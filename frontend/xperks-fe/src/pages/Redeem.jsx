@@ -40,17 +40,28 @@ function Redeem() {
         setEgldToBeRedeemed(Number(pointsToBeRedeemed * 1/egldPrice).toFixed(3))
     }
 
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
+        const handleRedeemBtn = async (id) => {
 
-    // try {
-    //     const response = await axios.post();
-    //     console.log(response)
-
-    // } catch (err) {
-    //    console.log(err)
-    // }
-}
+            await axios({
+              method: 'POST',
+              url: `${process.env.REACT_APP_API_URL}/api/user/redeem`,
+              headers: {
+                  Authorization: `Bearer ${auth.token}}`
+              },
+              params :  {pts: pointsToBeRedeemed,
+                         egldAmmount: egldToBeRedeemed }
+              
+          }).then(res => {
+              NotificationManager.success("Request submitted!", "Success!")
+            //   fetchData()
+                  })
+              .catch((error) => {
+                  // NotificationManager.error("Error sending the transaction!", "Error")
+                  console.log(error)
+                  });
+          
+          
+          }
 
   return (
     <div className='text-white h-auto mx-10 w-2/3  rounded-md  shadow-elrond-900 shadow-2xl'>
@@ -80,7 +91,7 @@ function Redeem() {
                 <h2 className='text-xl pt-[100px]'>Your MultiversX wallet</h2>
                 <span className='text-elrond text-xl'>{erdAddress}</span>
                 <div className='flex justify-center'>
-                    <button className={balance?'text-black bg-white rounded-lg px-5 py-1 my-16 font-bold transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-elrond duration-200 ':'hidden'}>Redeem</button>
+                    <button onClick={handleRedeemBtn} className={balance?'text-black bg-white rounded-lg px-5 py-1 my-16 font-bold transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-elrond duration-200 ':'hidden'}>Redeem</button>
                 </div>
         </div>
 
