@@ -20,5 +20,5 @@ public interface UserServiceIF {
 
     List<UserMainInfo> getUserList();
 
-    void redeemEgld(BigDecimal amount) throws Exception;
+    void redeemEgld(int pts, BigDecimal amount) throws Exception;
 }

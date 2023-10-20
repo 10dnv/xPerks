@@ -79,12 +79,20 @@ public class UserService extends EntityManagerSupport implements UserServiceIF {
     }
 
     @Override
-    public void redeemEgld(BigDecimal amount) throws Exception {
+    @Transactional
+    public void redeemEgld(int pts, BigDecimal amount) throws Exception {
         User user = getUserById(AuthUtil.getAuthenticatedUserId());
         if (StringUtils.isBlank(user.getErdAddress())) {
             return;
         }
+        if (user.getBalance() < pts) {
+            throw new IllegalArgumentException("Insufficient points");
+        }
         initMxTransaction(user, amount);
+
+        // update balance
+        user.setBalance(user.getBalance() - pts);
+        entityManager.persist(user);
     }
 
 

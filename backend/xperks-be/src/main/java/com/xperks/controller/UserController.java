@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @PostMapping("/redeem")
-    public void redeemEgld(@RequestParam @Positive @Digits(integer = 10, fraction = 3) BigDecimal amount) throws Exception {
-        userService.redeemEgld(amount);
+    public void redeemEgld(@RequestParam int pts, @RequestParam @Positive @Digits(integer = 10, fraction = 3) BigDecimal egldAmmount) throws Exception {
+        userService.redeemEgld(pts, egldAmmount);
     }
 }
