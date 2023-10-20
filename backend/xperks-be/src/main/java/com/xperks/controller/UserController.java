@@ -4,9 +4,12 @@ import com.xperks.dto.user.UserMainInfo;
 import com.xperks.dto.user.UserModel;
 import com.xperks.security.AuthUtil;
 import com.xperks.service.user.UserServiceIF;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -37,5 +40,10 @@ public class UserController {
     @ResponseBody
     public List<UserMainInfo> getUserList() {
         return userService.getUserList();
+    }
+
+    @PostMapping("/redeem")
+    public void redeemEgld(@RequestParam @Positive @Digits(integer = 10, fraction = 3) BigDecimal amount) throws Exception {
+        userService.redeemEgld(amount);
     }
 }
