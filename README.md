@@ -10,7 +10,7 @@ Recognition is made easy with xPerks. Developers & experts are motivated to keep
 
 
 ## Summary
-Connections between companies & experts are facilitated by xPerks. Grooming performance is the heart of sharing recongnition thorugh perks.
+Connections between companies & experts are facilitated by xPerks. Grooming performance is the heart of sharing recongnition through perks.
 
 Adoption is seamless, xPerks can be integrated with any company's account. 
 Then, link with personal MultiversX wallet is one click away.
@@ -54,7 +54,7 @@ Short answer: xPerks platform that runs blockchain -> endless customization + a 
 ###  How?
 Answer is one click away - xPerks creates means of sharing recognition through either top-down, peer2peer or reaching goals. Perks will be aligned with companies in Step 1. While starting with convertible tokens, introducing NFTs will make customization possibilities endless.
 
-Short answer: SSO for experts, blockchian config for companies, transparency for both
+Short answer: SSO for experts, blockchian config for companies, transparency for both.
 
 ## Roadmap
 Oct  2023: v0.1 top-down recognition features demo + blockchain connection on test-net
